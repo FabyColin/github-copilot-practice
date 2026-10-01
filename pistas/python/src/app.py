@@ -1,32 +1,33 @@
-"""Tienda de productos: API REST en Flask (proyecto base del curso).
+"""Farmacia Demo: API REST en Flask (proyecto base del curso).
 
-Los datos viven en memoria y se reinician al arrancar la aplicación.
+Los datos son ficticios y viven en memoria: se reinician al arrancar la aplicación.
 """
 import uuid
 
 from flask import Flask, jsonify, request
 
 CATEGORIAS = [
-    "Electricidad",
-    "Jardín y exteriores",
-    "Herramientas manuales",
-    "Ferretería",
-    "Madera y construcción",
-    "Pintura y acabados",
-    "Plomería",
-    "Herramientas eléctricas",
-    "Almacenamiento y organización",
+    "Analgésicos y antiinflamatorios",
+    "Antibióticos",
+    "Alergias y respiratorio",
+    "Aparato digestivo",
+    "Vitaminas y suplementos",
+    "Cuidado personal e higiene",
+    "Material de curación",
+    "Bebé y maternidad",
+    "Dispositivos médicos",
 ]
 
 
 def _productos_iniciales():
+    # (id, nombre, descripción, precio, categoría, stock, requiere_receta)
     semilla = [
-        ("p-001", "Martillo de acero", "Martillo 16 oz con mango antideslizante", 189.90, "Herramientas manuales", 40),
-        ("p-002", "Taladro inalámbrico", "Taladro 20V con dos baterías", 1499.00, "Herramientas eléctricas", 12),
-        ("p-003", "Cinta aislante", "Rollo de 18 m, color negro", 29.50, "Electricidad", 200),
-        ("p-004", "Pintura vinílica blanca", "Cubeta de 19 litros", 1250.00, "Pintura y acabados", 18),
-        ("p-005", "Manguera de jardín", "Manguera reforzada de 25 m", 349.00, "Jardín y exteriores", 25),
-        ("p-006", "Llave mezcladora", "Llave monomando cromada", 899.00, "Plomería", 9),
+        ("p-001", "Paracetamol 500 mg", "Caja con 20 tabletas", 45.00, "Analgésicos y antiinflamatorios", 120, False),
+        ("p-002", "Amoxicilina 500 mg", "Caja con 12 cápsulas", 129.50, "Antibióticos", 30, True),
+        ("p-003", "Vitamina C 1 g", "Tubo con 10 tabletas efervescentes", 89.00, "Vitaminas y suplementos", 60, False),
+        ("p-004", "Gel antibacterial 500 ml", "Frasco con dosificador", 62.00, "Cuidado personal e higiene", 80, False),
+        ("p-005", "Termómetro digital", "Lectura en 10 segundos", 149.00, "Dispositivos médicos", 25, False),
+        ("p-006", "Loratadina 10 mg", "Caja con 10 tabletas", 58.00, "Alergias y respiratorio", 40, False),
     ]
     return {
         pid: {
@@ -36,8 +37,9 @@ def _productos_iniciales():
             "precio": precio,
             "categoria": categoria,
             "stock": stock,
+            "requiere_receta": requiere_receta,
         }
-        for pid, nombre, descripcion, precio, categoria, stock in semilla
+        for pid, nombre, descripcion, precio, categoria, stock, requiere_receta in semilla
     }
 
 
@@ -71,8 +73,9 @@ def create_app():
             "nombre": datos["nombre"],
             "descripcion": datos.get("descripcion", ""),
             "precio": datos.get("precio", 0),
-            "categoria": datos.get("categoria", "Ferretería"),
+            "categoria": datos.get("categoria", "Cuidado personal e higiene"),
             "stock": datos.get("stock", 0),
+            "requiere_receta": datos.get("requiere_receta", False),
         }
         return jsonify(productos[product_id]), 201
 
@@ -82,7 +85,7 @@ def create_app():
         if producto is None:
             return jsonify({"error": "Producto no encontrado"}), 404
         datos = request.get_json(silent=True) or {}
-        for campo in ("nombre", "descripcion", "precio", "categoria", "stock"):
+        for campo in ("nombre", "descripcion", "precio", "categoria", "stock", "requiere_receta"):
             if campo in datos:
                 producto[campo] = datos[campo]
         return jsonify(producto)

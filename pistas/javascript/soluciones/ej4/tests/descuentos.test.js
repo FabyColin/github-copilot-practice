@@ -8,10 +8,10 @@ const {
 describe('descuentoPorVolumen', () => {
   test.each([
     [0, 0],
-    [9, 0],
-    [10, 0.05],
-    [24, 0.05],
-    [25, 0.1],
+    [4, 0],
+    [5, 0.05],
+    [9, 0.05],
+    [10, 0.1],
     [500, 0.1],
   ])('%i unidades -> %f', (unidades, esperado) => {
     expect(descuentoPorVolumen(unidades)).toBe(esperado);
@@ -20,7 +20,7 @@ describe('descuentoPorVolumen', () => {
 
 describe('descuentoPorCupon', () => {
   test('cupón válido sin importar mayúsculas', () => {
-    expect(descuentoPorCupon('bienvenida10')).toBe(0.1);
+    expect(descuentoPorCupon('salud10')).toBe(0.1);
   });
 
   test('sin cupón', () => {
@@ -43,17 +43,19 @@ describe('descuentoPorCupon', () => {
 
 describe('calcularTotal', () => {
   test('los descuentos se acumulan', () => {
-    const resultado = calcularTotal(1000, 10, 'BIENVENIDA10');
+    const resultado = calcularTotal(1000, 5, 'SALUD10'); // 5 % + 10 %
     expect(resultado.porcentaje_descuento).toBeCloseTo(0.15);
     expect(resultado.total).toBe(850);
   });
 
-  test('el descuento tiene un tope del 30 %', () => {
-    const sinTope = calcularTotal(1000, 30, 'VERANO15'); // 10 % + 15 % = 25 %
-    expect(sinTope.porcentaje_descuento).toBeCloseTo(0.25);
-    const conTope = calcularTotal(1000, 30, 'VENCIDO20', new Date('2020-01-01')); // 10 % + 20 % -> 30 %
-    expect(conTope.porcentaje_descuento).toBe(0.3);
-    expect(conTope.total).toBe(700);
+  test('el descuento tiene un tope del 20 %', () => {
+    const resultado = calcularTotal(1000, 10, 'ADULTOMAYOR15'); // 10 % + 15 % = 25 %, se recorta a 20 %
+    expect(resultado.porcentaje_descuento).toBe(0.2);
+    expect(resultado.total).toBe(800);
+  });
+
+  test('en el tope exacto no se recorta', () => {
+    expect(calcularTotal(1000, 10, 'SALUD10').porcentaje_descuento).toBeCloseTo(0.2);
   });
 
   test.each([

@@ -2,6 +2,10 @@
 
 Material para alumnos del curso de 1 día. Trabajarás con **Python y Flask**, y probarás con **pytest**.
 
+## Caso de práctica
+
+Los ejercicios usan **Farmacia Demo**, un caso ficticio con medicamentos, existencias, caducidades, recetas y descuentos. Los datos y reglas son didácticos; no representan precios ni requisitos regulatorios reales. No pegues en el chat datos de pacientes, recetas ni folios reales.
+
 ## Qué aprenderás
 
 - Usar sugerencias inline, Next Edit Suggestions y desarrollo guiado por comentarios.
@@ -19,7 +23,7 @@ Material para alumnos del curso de 1 día. Trabajarás con **Python y Flask**, y
 |---|---|
 | `docs/` | Módulos del curso, enunciados de los ejercicios, agenda y recursos |
 | `ejercicios/` | Archivos de arranque de los 5 ejercicios |
-| `src/` | Tienda de productos en Flask, proyecto base de varios ejercicios |
+| `src/` | Farmacia Demo en Flask (datos ficticios), proyecto base de varios ejercicios |
 | `.devcontainer/` | Entorno listo para Codespaces o Dev Containers |
 
 ## Los 5 ejercicios

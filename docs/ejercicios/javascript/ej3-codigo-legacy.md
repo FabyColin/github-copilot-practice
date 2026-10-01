@@ -5,14 +5,14 @@
 
 ## Escenario
 
-Heredaste `reporte_ventas.js`: nadie lo documentó, usa nombres de una letra y el equipo dice que "a veces los números no cuadran". Se ejecuta así:
+Heredaste el reporte de ventas de las sucursales de la farmacia, `reporte_ventas.js`: nadie lo documentó, usa nombres de una letra y el equipo dice que "a veces los números no cuadran". Se ejecuta así:
 
 ```bash
 cd ejercicios/ej3-codigo-legacy
 node reporte_ventas.js ventas.csv
 ```
 
-Debe mostrar el **top 3 de vendedores**, el **ticket promedio por región** y el **total de ventas**.
+Debe mostrar el **top 3 de vendedores**, el **ticket promedio por sucursal** y el **total de ventas**.
 
 ## Parte 1: entender (10 min)
 
@@ -35,7 +35,7 @@ El script tiene **3 bugs**. En JavaScript **ninguno detiene el programa**: todos
 4. Aplica el arreglo y **verifica ejecutando de nuevo**.
 
 !!! tip "Pista de verificación"
-    Calcula a mano el total de las ventas de `Marta` en `ventas.csv` y compáralo con lo que muestra el reporte. Revisa también qué imprime la región `Occidente`.
+    Calcula a mano el total de las ventas de `Marta` en `ventas.csv` y compáralo con lo que muestra el reporte. Revisa también qué imprime la sucursal `Occidente`.
 
 ## Parte 3: dejarlo mejor (5 min)
 

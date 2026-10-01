@@ -7,7 +7,7 @@ const XSS = '<script>alert(1)</script>';
 
 function crearEntorno() {
   const productos = new Map([
-    ['p-001', { id: 'p-001', nombre: 'Martillo de acero', descripcion: 'Martillo 16 oz', stock: 40 }],
+    ['p-001', { id: 'p-001', nombre: 'Paracetamol 500 mg', descripcion: 'Caja con 20 tabletas', stock: 40 }],
     ['p-xss', { id: 'p-xss', nombre: XSS, descripcion: '<b onclick=x>', stock: 1 }],
   ]);
   const app = express();
@@ -66,7 +66,7 @@ describe('GET /products/:id/ficha', () => {
     const { app } = crearEntorno();
     const r = await request(app).get('/products/p-001/ficha');
     expect(r.status).toBe(200);
-    expect(r.text).toContain('<h1>Martillo de acero</h1>');
+    expect(r.text).toContain('<h1>Paracetamol 500 mg</h1>');
     expect(r.text).toContain('Stock disponible: 40');
   });
 

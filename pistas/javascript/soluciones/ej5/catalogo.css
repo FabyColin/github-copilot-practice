@@ -1,25 +1,27 @@
-:root { --azul: #1f2a44; --naranja: #e8731a; --fondo: #f4f6fa; --borde: #dde2ee; }
+:root { --verde: #0f6b5c; --azul: #12353a; --naranja: #e8731a; --fondo: #f3f8f7; --borde: #d5e4e1; }
 body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--fondo); color: var(--azul); }
 
-.encabezado { background: var(--azul); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+.encabezado { background: var(--verde); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
 .encabezado strong { font-size: 1.8rem; }
-.encabezado nav a { color: #c9d3ee; margin-left: 24px; text-decoration: none; }
+.encabezado nav a { color: #cfeee8; margin-left: 24px; text-decoration: none; }
 
 .contenido { max-width: 1200px; margin: 0 auto; padding: 24px 40px 48px; }
 .filtros { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
-.filtros input, .filtros select { padding: 14px; font-size: 1rem; border: 2px solid #c4cbd9; border-radius: 10px; background: #fff; }
+.filtros input, .filtros select { padding: 14px; font-size: 1rem; border: 2px solid #bcd2cf; border-radius: 10px; background: #fff; }
 .filtros input { flex: 1 1 260px; }
 .filtros select { flex: 0 1 280px; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .tarjeta { background: #fff; border: 2px solid var(--borde); border-radius: 14px; padding: 16px; }
-.foto { height: 114px; background: #dfe5f2; border-radius: 10px; display: grid; place-items: center; color: #8a93a6; }
+.foto { height: 114px; background: #dcebe8; border-radius: 10px; display: grid; place-items: center; color: #7c9490; }
 .tarjeta h3 { margin: 14px 0 8px; }
-.etiqueta { display: inline-block; background: #e6edff; color: #2d4fa8; font-size: .85rem; padding: 4px 12px; border-radius: 12px; }
+.etiquetas { display: flex; flex-wrap: wrap; gap: 6px; min-height: 56px; align-content: flex-start; }
+.etiqueta { display: inline-block; background: #e1f2ee; color: var(--verde); font-size: .85rem; padding: 4px 12px; border-radius: 12px; }
+.receta { display: inline-block; background: #fdeaea; color: #a32020; font-size: .85rem; font-weight: 700; padding: 4px 12px; border-radius: 12px; }
 .pie { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
 .precio { color: var(--naranja); font-size: 1.4rem; font-weight: 700; }
 .agregar { background: var(--azul); color: #fff; border: 0; border-radius: 10px; padding: 12px 22px; font-weight: 700; cursor: pointer; }
-.vacio { text-align: center; padding: 48px 0; color: #6b7487; }
+.vacio { text-align: center; padding: 48px 0; color: #5f7a76; }
 
 @media (max-width: 600px) {
   .encabezado, .contenido { padding-left: 16px; padding-right: 16px; }

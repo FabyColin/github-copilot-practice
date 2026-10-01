@@ -1,7 +1,7 @@
 # Ejercicio 4: Agent mode, descuentos y pruebas en verde (JavaScript)
 
 **Módulos:** [7. Agent mode](../../modulos/07-agent-mode.md) y [8. Pruebas unitarias](../../modulos/08-pruebas-unitarias.md) · **Tiempo:** 55 min
-**Proyecto:** `src/` (API Express)
+**Proyecto:** `src/` (farmacia: API Express)
 
 ## Escenario
 
@@ -11,12 +11,16 @@ El endpoint `POST /orders` calcula el total del pedido sin descuentos. Negocio p
 
 | Regla | Detalle |
 |---|---|
-| **Descuento por volumen** | 10 a 24 unidades totales: 5 %. 25 o más: 10 % |
-| **Cupones** | `BIENVENIDA10` (10 %) y `VERANO15` (15 %). Se envían en el campo `cupon` (sin distinguir mayúsculas) |
+| **Descuento por volumen** | 5 a 9 piezas totales: 5 %. 10 o más: 10 % |
+| **Cupones** | `SALUD10` (10 %) y `ADULTOMAYOR15` (15 %). Se envían en el campo `cupon` (sin distinguir mayúsculas) |
 | **Cupón vencido o inexistente** | El pedido se rechaza con `400` y un mensaje claro |
-| **Acumulación** | Volumen y cupón se suman, con un **tope total del 30 %** |
+| **Acumulación** | Volumen y cupón se suman, con un **tope total del 20 %** |
+| **Receta** | Si algún producto tiene `requiere_receta` verdadero, el pedido debe traer `receta` (un folio de texto no vacío). Si falta o no es válido, `400` |
 | **Validación** | `cantidad` debe ser un entero mayor que cero; si no, `400` |
 | **Respuesta** | Incluye `subtotal`, `descuento`, `porcentaje_descuento` y `total` |
+
+!!! note "Datos ficticios"
+    Productos, precios, cupones y reglas son inventados con fines didácticos. No representan precios ni requisitos regulatorios reales.
 
 ### Restricciones
 
@@ -43,14 +47,14 @@ Prueba manual (en una terminal `npm start`, en otra):
 
 ```bash
 curl -X POST localhost:5000/orders -H "Content-Type: application/json" \
-  -d '{"items":[{"product_id":"p-003","cantidad":10}],"cupon":"BIENVENIDA10"}'
+  -d '{"items":[{"product_id":"p-001","cantidad":5}],"cupon":"SALUD10"}'
 ```
 
 ## Parte 3: pruebas en verde (25 min)
 
 1. Con `/tests` genera pruebas con Jest para `descuentos.js` y, con supertest, para `POST /orders` (en `src/tests/`).
 2. Pide al agente que las ejecute **y que explique si el fallo está en la prueba o en el código antes de corregir**.
-3. Pide explícitamente casos borde: 9 vs. 10 unidades, el tope del 30 %, cantidad negativa, cupón vencido, subtotal cero.
+3. Pide explícitamente casos borde: 4 vs. 5 y 9 vs. 10 piezas, el tope del 20 %, receta faltante o inválida, cantidad negativa, cupón vencido, subtotal cero.
 4. Mide cobertura:
 
 ```bash
@@ -65,7 +69,7 @@ npx jest --selectProjects server --coverage --collectCoverageFrom=src/descuentos
 - [ ] Cobertura de `descuentos.js` **mayor o igual al 85 %**.
 - [ ] `git status` muestra solo los archivos permitidos.
 - [ ] La prueba de mutación manual hizo fallar al menos una prueba.
-- [ ] Un cupón vencido y una cantidad negativa devuelven `400`.
+- [ ] Un cupón vencido, una cantidad negativa y un medicamento con receta sin folio devuelven `400`.
 - [ ] Puedes explicar el diff completo.
 
 ## Reflexión final (3 líneas)

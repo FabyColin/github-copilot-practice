@@ -33,7 +33,7 @@ Corrección esperada: aceptar solo enteros (no booleanos) distintos de cero, res
 
 ## Defecto 2: XSS reflejado
 
-Nombre y descripción se insertan en el HTML sin escapar. Quien pueda crear o editar productos (`POST /products` ya existe) puede inyectar script que se ejecuta al abrir la ficha en bodega.
+Nombre y descripción se insertan en el HTML sin escapar. Quien pueda crear o editar productos (`POST /products` ya existe) puede inyectar script que se ejecuta al abrir la ficha en el mostrador o la bodega.
 
 ```bash
 curl -X POST localhost:5001/products -H "Content-Type: application/json" -d '{"nombre":"<script>alert(1)</script>"}'

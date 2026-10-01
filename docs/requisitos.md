@@ -57,4 +57,4 @@ Después, en VS Code:
 
 ## Política de uso
 
-Trabajaremos con código de ejemplo. **No pegues código, datos ni credenciales de clientes** en el chat durante el curso.
+Trabajaremos con código y datos de ejemplo (una farmacia ficticia). **No pegues código, datos ni credenciales de clientes** en el chat durante el curso, y **nunca datos de pacientes, recetas ni folios reales**.

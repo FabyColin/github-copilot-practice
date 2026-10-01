@@ -8,7 +8,7 @@ from ajuste_stock import registrar_rutas
 def client():
     app = Flask(__name__)
     productos = {
-        "p-001": {"id": "p-001", "nombre": "Martillo de acero", "descripcion": "Martillo 16 oz", "stock": 40},
+        "p-001": {"id": "p-001", "nombre": "Paracetamol 500 mg", "descripcion": "Caja con 20 tabletas", "stock": 40},
     }
     registrar_rutas(app, productos)
     return app.test_client()

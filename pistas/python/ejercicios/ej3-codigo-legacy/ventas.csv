@@ -1,12 +1,12 @@
-fecha,vendedor,region,producto,cantidad,monto
-2026-01-05,Ana,Norte,Taladro,2,3000.00
-2026-01-07,Luis,Sur,Martillo,10,1899.00
-2026-01-09,Ana,Norte,Pintura,4,5000.00
-2026-01-12,Marta,Centro,Manguera,6,2094.00
-2026-01-15,Luis,Sur,Taladro,1,1499.00
-2026-01-18,Marta,Centro,Taladro,3,4497.00
-2026-01-20,Ana,Norte,Cinta,50,1475.00
-2026-01-22,Jorge,Sur,Pintura,2,2500.00
-2026-01-25,Jorge,Sur,Llave,1,899.00
-2026-01-28,Marta,Centro,Pintura,9,11250.00
-2026-01-30,Luis,Sur,Llave,2,1798.00
+fecha,vendedor,sucursal,producto,cantidad,monto
+2026-01-05,Ana,Norte,Termómetro digital,2,3000.00
+2026-01-07,Luis,Sur,Paracetamol 500 mg,10,1899.00
+2026-01-09,Ana,Norte,Vitamina C 1 g,4,5000.00
+2026-01-12,Marta,Centro,Gel antibacterial,6,2094.00
+2026-01-15,Luis,Sur,Termómetro digital,1,1499.00
+2026-01-18,Marta,Centro,Termómetro digital,3,4497.00
+2026-01-20,Ana,Norte,Gasas estériles,50,1475.00
+2026-01-22,Jorge,Sur,Vitamina C 1 g,2,2500.00
+2026-01-25,Jorge,Sur,Loratadina 10 mg,1,899.00
+2026-01-28,Marta,Centro,Vitamina C 1 g,9,11250.00
+2026-01-30,Luis,Sur,Loratadina 10 mg,2,1798.00

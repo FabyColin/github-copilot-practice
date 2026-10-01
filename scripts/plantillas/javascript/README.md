@@ -2,6 +2,10 @@
 
 Material para alumnos del curso de 1 día. Trabajarás con **Express y React (Vite)**, y probarás con **Jest**.
 
+## Caso de práctica
+
+Los ejercicios usan **Farmacia Demo**, un caso ficticio con medicamentos, existencias, caducidades, recetas y descuentos. Los datos y reglas son didácticos; no representan precios ni requisitos regulatorios reales. No pegues en el chat datos de pacientes, recetas ni folios reales.
+
 ## Qué aprenderás
 
 - Usar sugerencias inline, Next Edit Suggestions y desarrollo guiado por comentarios.
@@ -19,7 +23,7 @@ Material para alumnos del curso de 1 día. Trabajarás con **Express y React (Vi
 |---|---|
 | `docs/` | Módulos del curso, enunciados de los ejercicios, agenda y recursos |
 | `ejercicios/` | Archivos de arranque de los 5 ejercicios |
-| `src/` | API de la tienda en Express y sus pruebas |
+| `src/` | API de la farmacia en Express (datos ficticios) y sus pruebas |
 | `web/` | Interfaz en React (se completa en el Ejercicio 5) |
 | `.devcontainer/` | Entorno listo para Codespaces o Dev Containers |
 

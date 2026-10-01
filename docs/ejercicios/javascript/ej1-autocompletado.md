@@ -31,24 +31,25 @@
 **Archivo:** `tramoC_nes.js`
 
 1. Confirma que `github.copilot.nextEditSuggestions.enabled` está activo.
-2. En `crearProducto` cambia la propiedad `nombre` por `titulo`.
+2. En `crearProducto` cambia la propiedad `nombre` por `nombreComercial`.
 3. Sigue las sugerencias de Copilot con `Tab` y **revisa cada una** antes de aceptar. Ojo con la desestructuración `({ nombre })` y con los accesos `p.nombre`.
 4. Al terminar, busca (`Ctrl+F`) si quedó alguna referencia a `nombre` que NES no detectó.
 
-**Entregable:** el archivo con `titulo` en todos lados y consistente.
+**Entregable:** el archivo con `nombreComercial` en todos lados y consistente.
 
 ## Ejercicio completo: módulo de inventario (50 min)
 
 **Archivo:** `inventario.js` · **Validación:** `inventario.test.js`
 
-Construye la clase `Inventario` usando **solo autocompletado** y expórtala con `module.exports = { Inventario }`:
+Construye la clase `Inventario` de la farmacia usando **solo autocompletado** y expórtala con `module.exports = { Inventario }`:
 
 | Método | Comportamiento |
 |---|---|
-| `agregar(producto)` | Guarda un producto (objeto con `sku`, `nombre`, `stock`, `precio`). Si el `sku` ya existe, lanza un `Error` |
+| `agregar(producto)` | Guarda un producto (objeto con `sku`, `nombre`, `stock`, `precio` y `caducidad` como `Date`). Si el `sku` ya existe, lanza un `Error` |
 | `eliminar(sku)` | Elimina el producto. Si no existe, lanza un `Error` |
 | `buscar(texto)` | Devuelve productos cuyo nombre contenga el texto, **sin distinguir mayúsculas** |
 | `stockBajo(umbral)` | Devuelve productos con `stock` menor al umbral |
+| `proximosACaducar(dias, hoy)` | Devuelve los productos que **ya caducaron o caducan en los próximos `dias`**, ordenados del más urgente al menos. `hoy` es opcional (por defecto, la fecha actual) |
 | `reporte()` | Devuelve `{ productos, unidades, valorTotal }` con `valorTotal = suma(stock * precio)` |
 
 ### Cómo trabajar
@@ -63,7 +64,7 @@ npm run test:ej -- ej1
 
 ### Criterios de aceptación
 
-- [ ] Las 6 pruebas de `inventario.test.js` pasan.
+- [ ] Las 8 pruebas de `inventario.test.js` pasan.
 - [ ] Todos los métodos tienen JSDoc.
 - [ ] No usaste el chat.
 - [ ] Puedes explicar cada línea del código final.

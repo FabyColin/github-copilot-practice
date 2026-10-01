@@ -5,14 +5,14 @@
 
 ## Escenario
 
-Heredaste `reporte_ventas.py`: nadie lo documentó, usa nombres de una letra y el equipo dice que "a veces falla". Se ejecuta así:
+Heredaste el reporte de ventas de las sucursales de la farmacia, `reporte_ventas.py`: nadie lo documentó, usa nombres de una letra y el equipo dice que "a veces falla". Se ejecuta así:
 
 ```bash
 cd ejercicios/ej3-codigo-legacy
 python reporte_ventas.py ventas.csv
 ```
 
-Debe mostrar el **top 3 de vendedores**, el **ticket promedio por región** y el **total de ventas**.
+Debe mostrar el **top 3 de vendedores**, el **ticket promedio por sucursal** y el **total de ventas**.
 
 ## Parte 1: entender (10 min)
 

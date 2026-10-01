@@ -9,6 +9,10 @@ Curso práctico de 8 horas para aprender a trabajar con GitHub Copilot en el flu
 
 Este repositorio es la **fuente única**: contiene la teoría, las dos pistas, las soluciones y la guía del instructor. Los repos de alumnos se generan desde aquí con un script y **no se editan a mano**.
 
+## Caso de práctica
+
+Todos los ejercicios usan **Farmacia Demo**, un caso ficticio con medicamentos, existencias, caducidades, recetas y descuentos. Los datos y reglas son didácticos; no representan precios ni requisitos regulatorios reales.
+
 ## Qué aprenderás
 
 - Usar sugerencias inline, Next Edit Suggestions y desarrollo guiado por comentarios.

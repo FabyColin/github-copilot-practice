@@ -2,7 +2,7 @@
  * Tramo C: Next Edit Suggestions (NES).
  *
  * Instrucciones: activa NES (`github.copilot.nextEditSuggestions.enabled`).
- * Renombra la propiedad "nombre" a "titulo" SOLO en la función `crearProducto`
+ * Renombra la propiedad "nombre" a "nombreComercial" SOLO en la función `crearProducto`
  * y observa cómo Copilot sugiere el resto de las ediciones relacionadas.
  * Navega entre ellas con Tab y acéptalas una por una, revisando cada una.
  */

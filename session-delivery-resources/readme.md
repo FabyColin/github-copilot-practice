@@ -11,6 +11,23 @@ Curso de 1 día (09:00 a 16:50, 7 h 50 min efectivas) sobre GitHub Copilot, con 
 | `10-mas-alla-del-ide/` | Material de la demo: issue de ejemplo y configuración MCP |
 | `11-opcional-revision-pr/` | **Ejercicio opcional** (fuera de la agenda): guion y clave de los defectos |
 
+## Dominio del curso: farmacia
+
+Todos los ejercicios usan el mismo caso: **Farmacia Demo**, con medicamentos, material de curación y productos de cuidado personal. Los datos son **ficticios**.
+
+| Concepto | En los ejercicios |
+|---|---|
+| Productos | 6 productos con precio, categoría, existencias y `requiere_receta` |
+| Ejercicio 1 | Inventario con **caducidad** (productos por caducar) |
+| Ejercicio 3 | Reporte de ventas por **sucursal** |
+| Ejercicio 4 | Descuentos por piezas y cupones (`SALUD10`, `ADULTOMAYOR15`) con tope del 20 %, y **folio de receta obligatorio** para los productos que lo requieren |
+| Ejercicio 5 | Catálogo con etiqueta "Requiere receta" |
+| Opcional | Ajuste de existencias y ficha de producto |
+
+**Importante:** las reglas (descuentos, cupones, receta) son **didácticas**. No representan precios, promociones ni requisitos regulatorios reales. Si quieres alinearlas con las políticas de la farmacia (por ejemplo, qué productos exigen receta o qué descuentos existen), valídalo con alguien del área de operación o de cumplimiento y ajusta `descuentos.*` y los datos semilla en `src/app.*`. Después regenera los repos de alumnos con el script.
+
+**Reglas de privacidad para la sesión:** en un entorno de salud conviene reforzar que **no se pegan en el chat datos de pacientes, recetas, folios reales ni información de clientes**. Todos los ejemplos usan folios inventados (por ejemplo `RX-2026-0001`).
+
 ## Qué pista elegir
 
 Los módulos de teoría, la agenda y los tiempos son iguales. Pregunta al grupo con anticipación (idealmente al inscribirse):

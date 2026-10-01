@@ -5,13 +5,14 @@
 
 ## Escenario
 
-Diseño entregó el mockup del catálogo de **FerreMax**. Tu trabajo es convertirlo en un componente React que consuma la API de la tienda.
+Diseño entregó el mockup del catálogo de **Farmacia Demo**. Tu trabajo es convertirlo en un componente React que consuma la API de la farmacia.
 
 ![Mockup](../../assets/mockup-catalogo.png)
 
 ## Requisitos funcionales
 
 - Componente `web/Catalogo.jsx` que `App.jsx` renderiza.
+- Los productos que `requiere_receta` muestran una etiqueta **"Requiere receta"** como en el mockup.
 - Las tarjetas se cargan desde `GET /products` con `fetch` dentro de `useEffect`.
 - El filtro de categoría usa el parámetro `?categoria=` de la API.
 - La búsqueda filtra por nombre.

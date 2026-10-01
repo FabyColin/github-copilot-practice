@@ -1,7 +1,7 @@
 # Instrucciones para GitHub Copilot en este proyecto
 
 ## Contexto
-Este proyecto es una API REST de una tienda de productos hecha con Flask y probada con pytest.
+Este proyecto es una API REST de una farmacia (productos, existencias y pedidos) hecha con Flask y probada con pytest. Todos los datos de ejemplo son ficticios.
 
 ## Estilo de código
 - Python 3.12. Type hints obligatorios en funciones nuevas.
@@ -12,6 +12,7 @@ Este proyecto es una API REST de una tienda de productos hecha con Flask y proba
 ## Seguridad y calidad
 - Valida siempre la entrada del usuario en los endpoints.
 - Nunca dejes secretos ni contraseñas en el código.
+- No registres ni imprimas datos personales ni folios de receta reales; en ejemplos y pruebas usa datos ficticios.
 - No uses `debug=True` fuera de desarrollo local.
 
 ## Pruebas

@@ -3,7 +3,7 @@
 **Título:** Agregar paginación a `GET /products`
 
 **Contexto**
-La API de la tienda (`src/app.py`) devuelve todos los productos en una sola respuesta. Con catálogos grandes esto será lento.
+La API de la farmacia (`src/app.py`) devuelve todos los productos en una sola respuesta. Con catálogos grandes esto será lento.
 
 **Qué se necesita**
 - Parámetros opcionales `pagina` (por defecto 1) y `tamano` (por defecto 10, máximo 50).

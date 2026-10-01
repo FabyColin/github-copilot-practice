@@ -31,6 +31,7 @@ La idea importante es distinguir qué consume qué:
 
 - **Qué se envía:** el código y el contexto que Copilot necesita para responder. Revisa la política de tu plan sobre retención y entrenamiento.
 - **No compartas** secretos, credenciales, datos personales ni código de clientes sin autorización.
+- **En el sector salud,** extrema la precaución: nunca pegues datos de pacientes, recetas, folios reales ni información de clientes. Usa siempre datos ficticios en ejemplos y pruebas.
 - **Filtro de coincidencias con código público:** puede activarse en la configuración de la cuenta u organización.
 - **Tú eres el autor.** Todo código sugerido debe revisarse, ejecutarse y probarse antes de aceptarse.
 

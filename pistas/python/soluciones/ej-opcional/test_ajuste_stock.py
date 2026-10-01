@@ -11,7 +11,7 @@ XSS = "<script>alert(1)</script>"
 def entorno():
     app = Flask(__name__)
     productos = {
-        "p-001": {"id": "p-001", "nombre": "Martillo de acero", "descripcion": "Martillo 16 oz", "stock": 40},
+        "p-001": {"id": "p-001", "nombre": "Paracetamol 500 mg", "descripcion": "Caja con 20 tabletas", "stock": 40},
         "p-xss": {"id": "p-xss", "nombre": XSS, "descripcion": "<b onclick=x>", "stock": 1},
     }
     registrar_rutas(app, productos)
@@ -61,7 +61,7 @@ def test_producto_inexistente(entorno):
 def test_ficha_muestra_los_datos(entorno):
     client, _ = entorno
     html = client.get("/products/p-001/ficha").get_data(as_text=True)
-    assert "<h1>Martillo de acero</h1>" in html
+    assert "<h1>Paracetamol 500 mg</h1>" in html
     assert "Stock disponible: 40" in html
 
 

@@ -32,7 +32,7 @@ function f(a) {
     console.log(n, par[0], par[1][0], par[1][1]);
     n++;
   });
-  console.log('TICKET PROMEDIO POR REGION');
+  console.log('TICKET PROMEDIO POR SUCURSAL');
   R.forEach(function (k) {
     console.log(k, g[k][0] / g[k][1]);
   });

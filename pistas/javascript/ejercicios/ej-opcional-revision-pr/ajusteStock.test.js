@@ -4,7 +4,7 @@ const { crearRutasDeStock } = require('./ajusteStock');
 
 function crearApp() {
   const productos = new Map([
-    ['p-001', { id: 'p-001', nombre: 'Martillo de acero', descripcion: 'Martillo 16 oz', stock: 40 }],
+    ['p-001', { id: 'p-001', nombre: 'Paracetamol 500 mg', descripcion: 'Caja con 20 tabletas', stock: 40 }],
   ]);
   const app = express();
   app.use(express.json());

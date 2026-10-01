@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import './catalogo.css';
 
 const CATEGORIAS = [
-  'Electricidad',
-  'Jardín y exteriores',
-  'Herramientas manuales',
-  'Ferretería',
-  'Madera y construcción',
-  'Pintura y acabados',
-  'Plomería',
-  'Herramientas eléctricas',
-  'Almacenamiento y organización',
+  'Analgésicos y antiinflamatorios',
+  'Antibióticos',
+  'Alergias y respiratorio',
+  'Aparato digestivo',
+  'Vitaminas y suplementos',
+  'Cuidado personal e higiene',
+  'Material de curación',
+  'Bebé y maternidad',
+  'Dispositivos médicos',
 ];
 
 const moneda = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
@@ -20,7 +20,10 @@ function Tarjeta({ producto }) {
     <article className="tarjeta">
       <div className="foto" aria-hidden="true">foto</div>
       <h3>{producto.nombre}</h3>
-      <span className="etiqueta">{producto.categoria}</span>
+      <div className="etiquetas">
+        <span className="etiqueta">{producto.categoria}</span>
+        {producto.requiere_receta && <span className="receta">Requiere receta</span>}
+      </div>
       <div className="pie">
         <span className="precio">{moneda.format(producto.precio)}</span>
         <button type="button" className="agregar">Agregar</button>
@@ -63,11 +66,11 @@ export default function Catalogo() {
   return (
     <>
       <header className="encabezado">
-        <strong>FerreMax</strong>
+        <strong>Farmacia Demo</strong>
         <nav aria-label="Principal">
           <a href="#catalogo">Catálogo</a>
-          <a href="#ofertas">Ofertas</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#promociones">Promociones</a>
+          <a href="#sucursales">Sucursales</a>
         </nav>
       </header>
       <main className="contenido" id="catalogo">

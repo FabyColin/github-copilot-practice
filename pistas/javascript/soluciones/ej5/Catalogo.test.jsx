@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import Catalogo from './Catalogo';
 
 const PRODUCTOS = [
-  { id: 'p-001', nombre: 'Martillo de acero', categoria: 'Herramientas manuales', precio: 189.9 },
-  { id: 'p-002', nombre: 'Taladro inalámbrico', categoria: 'Herramientas eléctricas', precio: 1499 },
+  { id: 'p-001', nombre: 'Paracetamol 500 mg', categoria: 'Analgésicos y antiinflamatorios', precio: 45, requiere_receta: false },
+  { id: 'p-002', nombre: 'Amoxicilina 500 mg', categoria: 'Antibióticos', precio: 129.5, requiere_receta: true },
 ];
 
 function simularApi(respuesta) {
@@ -18,23 +18,30 @@ afterEach(() => {
 test('muestra los productos recibidos de la API', async () => {
   simularApi({ ok: true, json: async () => PRODUCTOS });
   render(<Catalogo />);
-  expect(await screen.findByText('Martillo de acero')).toBeInTheDocument();
-  expect(screen.getByText('Taladro inalámbrico')).toBeInTheDocument();
+  expect(await screen.findByText('Paracetamol 500 mg')).toBeInTheDocument();
+  expect(screen.getByText('Amoxicilina 500 mg')).toBeInTheDocument();
+});
+
+test('marca solo los productos que requieren receta', async () => {
+  simularApi({ ok: true, json: async () => PRODUCTOS });
+  render(<Catalogo />);
+  await screen.findByText('Paracetamol 500 mg');
+  expect(screen.getAllByText('Requiere receta')).toHaveLength(1);
 });
 
 test('la búsqueda filtra por nombre', async () => {
   simularApi({ ok: true, json: async () => PRODUCTOS });
   render(<Catalogo />);
-  await screen.findByText('Martillo de acero');
-  await userEvent.type(screen.getByLabelText('Buscar producto'), 'taladro');
-  expect(screen.queryByText('Martillo de acero')).not.toBeInTheDocument();
-  expect(screen.getByText('Taladro inalámbrico')).toBeInTheDocument();
+  await screen.findByText('Paracetamol 500 mg');
+  await userEvent.type(screen.getByLabelText('Buscar producto'), 'amoxi');
+  expect(screen.queryByText('Paracetamol 500 mg')).not.toBeInTheDocument();
+  expect(screen.getByText('Amoxicilina 500 mg')).toBeInTheDocument();
 });
 
 test('muestra un estado vacío cuando nada coincide', async () => {
   simularApi({ ok: true, json: async () => PRODUCTOS });
   render(<Catalogo />);
-  await screen.findByText('Martillo de acero');
+  await screen.findByText('Paracetamol 500 mg');
   await userEvent.type(screen.getByLabelText('Buscar producto'), 'zzz');
   expect(screen.getByText(/No encontramos productos/)).toBeInTheDocument();
 });
@@ -42,9 +49,9 @@ test('muestra un estado vacío cuando nada coincide', async () => {
 test('cambiar la categoría vuelve a consultar la API con el filtro', async () => {
   simularApi({ ok: true, json: async () => PRODUCTOS });
   render(<Catalogo />);
-  await screen.findByText('Martillo de acero');
-  await userEvent.selectOptions(screen.getByLabelText('Categoría'), 'Plomería');
-  await waitFor(() => expect(global.fetch).toHaveBeenLastCalledWith('/products?categoria=Plomer%C3%ADa'));
+  await screen.findByText('Paracetamol 500 mg');
+  await userEvent.selectOptions(screen.getByLabelText('Categoría'), 'Antibióticos');
+  await waitFor(() => expect(global.fetch).toHaveBeenLastCalledWith('/products?categoria=Antibi%C3%B3ticos'));
 });
 
 test('muestra un mensaje si la API falla', async () => {

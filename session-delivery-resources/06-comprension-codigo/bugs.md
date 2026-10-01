@@ -8,9 +8,9 @@ Salida **con bugs** sobre `ventas.csv`: el top calcula mal y termina con `ZeroDi
 
 | # | Bug | Línea (original) | Síntoma | Corrección | ¿Se nota? |
 |---|---|---|---|---|---|
-| 1 | **Off-by-one**: `range(len(r) - 1)` omite la última fila | `for i in range(len(r) - 1)` | Falta la venta del 30-ene (Luis, 1798.00): sus totales y los de la región Sur salen menores | `range(len(r))` o iterar `for fila in r` | **No**: solo comparando a mano |
+| 1 | **Off-by-one**: `range(len(r) - 1)` omite la última fila | `for i in range(len(r) - 1)` | Falta la venta del 30-ene (Luis, 1798.00): sus totales y los de la sucursal Sur salen menores | `range(len(r))` o iterar `for fila in r` | **No**: solo comparando a mano |
 | 2 | **Orden por texto**: `str(z[1][0])` ordena lexicográficamente | `key=lambda z: str(z[1][0])` | El top queda en orden incorrecto (p. ej. `"9475.0"` queda por encima de `"17841.0"`) | `key=lambda z: z[1][0]` | **No**: parece un ranking razonable |
-| 3 | **División entre cero**: la región `Occidente` no tiene ventas | `g[k][0] / g[k][1]` | `ZeroDivisionError` al imprimir el ticket promedio | Proteger el caso sin ventas (mostrar "sin ventas"), no ocultar con `try/except` genérico | **Sí**: falla con traceback |
+| 3 | **División entre cero**: la sucursal `Occidente` no tiene ventas | `g[k][0] / g[k][1]` | `ZeroDivisionError` al imprimir el ticket promedio | Proteger el caso sin ventas (mostrar "sin ventas"), no ocultar con `try/except` genérico | **Sí**: falla con traceback |
 
 ## Valores correctos (solución de referencia)
 
@@ -54,9 +54,9 @@ Mismos datos (`ventas.csv`) y mismos bugs. La diferencia: **ninguno detiene el p
 
 | # | Bug | Código | Síntoma | Corrección |
 |---|---|---|---|---|
-| 1 | **Off-by-one** | `for (var i = 0; i < r.length - 1; i++)` | Falta la venta del 30-ene (Luis, 1798): totales de Luis y de Sur menores | `i < r.length` o `for...of` |
+| 1 | **Off-by-one** | `for (var i = 0; i < r.length - 1; i++)` | Falta la venta del 30-ene (Luis, 1798): totales de Luis y de la sucursal Sur menores | `i < r.length` o `for...of` |
 | 2 | **Orden por texto** | `String(b[1][0]) > String(a[1][0]) ? 1 : -1` | El top queda mal: Marta (17841) queda fuera porque `"17841"` < `"3399"` como cadenas | `b[1][0] - a[1][0]` |
-| 3 | **`0 / 0` da `NaN`** | `g[k][0] / g[k][1]` | La región `Occidente` imprime `NaN` en vez de fallar | Tratar el caso sin ventas (mostrar "sin ventas"); no convertir `NaN` en `0` |
+| 3 | **`0 / 0` da `NaN`** | `g[k][0] / g[k][1]` | La sucursal `Occidente` imprime `NaN` en vez de fallar | Tratar el caso sin ventas (mostrar "sin ventas"); no convertir `NaN` en `0` |
 
 ### Salida real al corregir uno por uno
 

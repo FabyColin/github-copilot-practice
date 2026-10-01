@@ -1,6 +1,8 @@
-# Tienda de productos (proyecto base)
+# Farmacia Demo (proyecto base)
 
-API REST en Flask con datos en memoria. Es el proyecto que se usa en los ejercicios 2, 4 y 5.
+API REST en Flask con datos ficticios en memoria. Es el proyecto que se usa en los ejercicios 2, 4 y 5.
+
+> Los productos, precios y reglas son **ficticios y didácticos**. No representan precios ni requisitos regulatorios reales.
 
 ## Ejecutar
 
@@ -22,4 +24,4 @@ pytest                 # pruebas
 | DELETE | `/products/<id>` | Elimina |
 | POST | `/orders` | Calcula el total de un pedido |
 
-Cada producto tiene `id`, `nombre`, `descripcion`, `precio`, `categoria` y `stock`.
+Cada producto tiene `id`, `nombre`, `descripcion`, `precio`, `categoria`, `stock` y `requiere_receta` (verdadero para medicamentos que se venden solo con receta, como los antibióticos).

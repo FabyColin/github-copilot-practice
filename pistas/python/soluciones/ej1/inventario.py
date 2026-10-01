@@ -1,4 +1,5 @@
 """Solución de referencia del Ejercicio 1."""
+from datetime import date, timedelta
 
 
 class Inventario:
@@ -20,6 +21,12 @@ class Inventario:
 
     def stock_bajo(self, umbral: int) -> list:
         return [p for p in self._productos.values() if p["stock"] < umbral]
+
+    def proximos_a_caducar(self, dias: int, hoy: date | None = None) -> list:
+        """Productos que ya caducaron o caducan en los próximos `dias`, del más urgente al menos."""
+        limite = (hoy or date.today()) + timedelta(days=dias)
+        proximos = [p for p in self._productos.values() if p["caducidad"] <= limite]
+        return sorted(proximos, key=lambda p: p["caducidad"])
 
     def reporte(self) -> dict:
         productos = self._productos.values()

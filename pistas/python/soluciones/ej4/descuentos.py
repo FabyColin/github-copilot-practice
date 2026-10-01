@@ -1,14 +1,17 @@
-"""Reglas de descuento por volumen y cupones (solución de referencia del Ejercicio 4)."""
+"""Reglas de descuento por volumen y cupones (solución de referencia del Ejercicio 4).
+
+Datos y reglas ficticios, con fines didácticos.
+"""
 from datetime import date
 
-DESCUENTO_MAXIMO = 0.30
+DESCUENTO_MAXIMO = 0.20
 
-# Descuento por unidades totales del pedido: (mínimo de unidades, porcentaje)
-ESCALAS_VOLUMEN = [(25, 0.10), (10, 0.05)]
+# Descuento por piezas totales del pedido: (mínimo de piezas, porcentaje)
+ESCALAS_VOLUMEN = [(10, 0.10), (5, 0.05)]
 
 CUPONES = {
-    "BIENVENIDA10": {"porcentaje": 0.10, "vence": date(2099, 12, 31)},
-    "VERANO15": {"porcentaje": 0.15, "vence": date(2099, 12, 31)},
+    "SALUD10": {"porcentaje": 0.10, "vence": date(2099, 12, 31)},
+    "ADULTOMAYOR15": {"porcentaje": 0.15, "vence": date(2099, 12, 31)},
     "VENCIDO20": {"porcentaje": 0.20, "vence": date(2020, 1, 1)},
 }
 
@@ -36,7 +39,7 @@ def descuento_por_cupon(codigo: str | None, hoy: date | None = None) -> float:
 
 
 def calcular_total(subtotal: float, unidades: int, codigo: str | None = None, hoy: date | None = None) -> dict:
-    """Combina descuento por volumen y por cupón, con un tope del 30 %."""
+    """Combina descuento por volumen y por cupón, con un tope del 20 %."""
     if subtotal < 0 or unidades < 0:
         raise ValueError("El subtotal y las unidades no pueden ser negativos")
     porcentaje = min(

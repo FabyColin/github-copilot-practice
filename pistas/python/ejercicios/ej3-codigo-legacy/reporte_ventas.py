@@ -27,7 +27,7 @@ def f(a):
     for k, v in s[:3]:
         print(n, k, v[0], v[1])
         n += 1
-    print("TICKET PROMEDIO POR REGION")
+    print("TICKET PROMEDIO POR SUCURSAL")
     for k in R:
         print(k, g[k][0] / g[k][1])
     print("TOTAL", sum(v[0] for v in t.values()))

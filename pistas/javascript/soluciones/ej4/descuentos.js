@@ -1,16 +1,19 @@
-/** Reglas de descuento por volumen y cupones (solución de referencia del Ejercicio 4). */
+/**
+ * Reglas de descuento por volumen y cupones (solución de referencia del Ejercicio 4).
+ * Datos y reglas ficticios, con fines didácticos.
+ */
 
-const DESCUENTO_MAXIMO = 0.3;
+const DESCUENTO_MAXIMO = 0.2;
 
-// Descuento por unidades totales del pedido: [mínimo de unidades, porcentaje]
+// Descuento por piezas totales del pedido: [mínimo de piezas, porcentaje]
 const ESCALAS_VOLUMEN = [
-  [25, 0.1],
-  [10, 0.05],
+  [10, 0.1],
+  [5, 0.05],
 ];
 
 const CUPONES = {
-  BIENVENIDA10: { porcentaje: 0.1, vence: new Date('2099-12-31') },
-  VERANO15: { porcentaje: 0.15, vence: new Date('2099-12-31') },
+  SALUD10: { porcentaje: 0.1, vence: new Date('2099-12-31') },
+  ADULTOMAYOR15: { porcentaje: 0.15, vence: new Date('2099-12-31') },
   VENCIDO20: { porcentaje: 0.2, vence: new Date('2020-01-01') },
 };
 
@@ -42,7 +45,7 @@ function descuentoPorCupon(codigo, hoy = new Date()) {
   return cupon.porcentaje;
 }
 
-/** Combina descuento por volumen y por cupón, con un tope del 30 %. */
+/** Combina descuento por volumen y por cupón, con un tope del 20 %. */
 function calcularTotal(subtotal, unidades, codigo = null, hoy = new Date()) {
   if (subtotal < 0 || unidades < 0) {
     throw new RangeError('El subtotal y las unidades no pueden ser negativos');

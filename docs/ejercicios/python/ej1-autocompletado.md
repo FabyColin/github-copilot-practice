@@ -31,24 +31,25 @@
 **Archivo:** `tramo_c_nes.py`
 
 1. Confirma que `github.copilot.nextEditSuggestions.enabled` está activo.
-2. En `crear_producto` cambia la llave `"nombre"` por `"titulo"`.
+2. En `crear_producto` cambia la llave `"nombre"` por `"nombre_comercial"`.
 3. Sigue las sugerencias de Copilot con `Tab` y **revisa cada una** antes de aceptar.
 4. Al terminar, busca (`Ctrl+F`) si quedó alguna referencia a `"nombre"` que NES no detectó.
 
-**Entregable:** el archivo con `"titulo"` en todos lados y consistente.
+**Entregable:** el archivo con `"nombre_comercial"` en todos lados y consistente.
 
 ## Ejercicio completo: módulo de inventario (50 min)
 
 **Archivo:** `inventario.py` · **Validación:** `test_inventario.py`
 
-Construye la clase `Inventario` usando **solo autocompletado**:
+Construye la clase `Inventario` de la farmacia usando **solo autocompletado**:
 
 | Método | Comportamiento |
 |---|---|
-| `agregar(producto)` | Guarda un producto (`dict` con `sku`, `nombre`, `stock`, `precio`). Si el `sku` ya existe, lanza `ValueError` |
+| `agregar(producto)` | Guarda un producto (`dict` con `sku`, `nombre`, `stock`, `precio` y `caducidad` como `date`). Si el `sku` ya existe, lanza `ValueError` |
 | `eliminar(sku)` | Elimina el producto. Si no existe, lanza `KeyError` |
 | `buscar(texto)` | Devuelve productos cuyo nombre contenga el texto, **sin distinguir mayúsculas** |
 | `stock_bajo(umbral)` | Devuelve productos con `stock` menor al umbral |
+| `proximos_a_caducar(dias, hoy=None)` | Devuelve los productos que **ya caducaron o caducan en los próximos `dias`**, ordenados del más urgente al menos. `hoy` es opcional (por defecto, la fecha actual) |
 | `reporte()` | Devuelve `{"productos": n, "unidades": total_stock, "valor_total": suma(stock * precio)}` |
 
 ### Cómo trabajar
@@ -64,7 +65,7 @@ pytest -q
 
 ### Criterios de aceptación
 
-- [ ] Las 6 pruebas de `test_inventario.py` pasan.
+- [ ] Las 8 pruebas de `test_inventario.py` pasan.
 - [ ] Todos los métodos tienen type hints y docstring.
 - [ ] No usaste el chat.
 - [ ] Puedes explicar cada línea del código final.

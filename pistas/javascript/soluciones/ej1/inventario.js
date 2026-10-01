@@ -1,4 +1,6 @@
 /** Solución de referencia del Ejercicio 1. */
+const MS_POR_DIA = 24 * 60 * 60 * 1000;
+
 class Inventario {
   #productos = new Map();
 
@@ -22,6 +24,14 @@ class Inventario {
 
   stockBajo(umbral) {
     return [...this.#productos.values()].filter((p) => p.stock < umbral);
+  }
+
+  /** Productos que ya caducaron o caducan en los próximos `dias`, del más urgente al menos. */
+  proximosACaducar(dias, hoy = new Date()) {
+    const limite = new Date(hoy.getTime() + dias * MS_POR_DIA);
+    return [...this.#productos.values()]
+      .filter((p) => p.caducidad <= limite)
+      .sort((a, b) => a.caducidad - b.caducidad);
   }
 
   reporte() {

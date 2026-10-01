@@ -312,7 +312,7 @@ content = [
          {"label": "4", "headline": "Iterar", "description": "Correcciones concretas", "icon": "arrow_right"},
      ]},
     {"type": "timeline",
-     "title": "Ejercicio 5: catálogo de FerreMax.",
+     "title": "Ejercicio 5: catálogo de la farmacia.",
      "subtitle": "Una página Flask que consume la API de productos.",
      "phases": [
          {"number": "01", "title": "Primera versión", "duration": "10 min",
@@ -374,7 +374,7 @@ TEXTOS_JS = {
     "Pytest es nuestro equivalente a Jest.": "Jest para la API y React Testing Library para los componentes.",
     "en descuentos.py, y además la prueba de mutación debe fallar": "en descuentos.js, y además la prueba de mutación debe fallar",
     "Del mockup a la página.": "Del mockup al componente.",
-    "Ejercicio 5: catálogo de FerreMax.": "Ejercicio 5: catálogo en React.",
+    "Ejercicio 5: catálogo de la farmacia.": "Ejercicio 5: catálogo en React.",
     "Una página Flask que consume la API de productos.": "Un componente React que consume la API de productos.",
     "Ruta /catalogo": "Componente Catalogo",
     "¿Escapa el HTML?": "¿Pinta con JSX?",

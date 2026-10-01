@@ -34,7 +34,7 @@ Aclara que el temario habla de Jest (pista JavaScript) y que la pista Python usa
 
 ## Solución de referencia
 
-`soluciones/ej4/`: `descuentos.py`, `app.py` y 26 pruebas (cobertura de `descuentos.py`: 100 %). Para probarla sin tocar `src/`:
+`soluciones/ej4/`: `descuentos.py`, `app.py` y 35 pruebas (cobertura de `descuentos.py`: 100 %). Para probarla sin tocar `src/`:
 
 ```bash
 mkdir /tmp/ej4 && cp -r src/. /tmp/ej4/
@@ -49,12 +49,12 @@ cd /tmp/ej4 && pytest --cov=descuentos
 |---|---|
 | Pruebas sin `assert` útil | "Cobertura no es calidad" |
 | El agente toca `templates/` o `requirements.txt` | "Recuerda el alcance: dilo en el prompt" |
-| Cupón vencido no se prueba | "¿Qué pasa el último día de vigencia?" |
+| Cupón vencido o receta sin folio no se prueban | "¿Qué pasa el último día de vigencia? ¿Y si falta el folio de receta?" |
 
 ## Pista JavaScript
 
 - Pruebas: `npm test` (proyectos `server` y `web`). Cobertura de la lógica nueva:
   `npx jest --selectProjects server --coverage --collectCoverageFrom=src/descuentos.js`
 - Archivos permitidos: `src/app.js`, `src/descuentos.js` y pruebas en `src/tests/`.
-- Solución de referencia: `pistas/javascript/soluciones/ej4/` (26 pruebas; cobertura de `descuentos.js`: 100 %). Para probarla sin tocar `src/`, copia la pista a una carpeta temporal, instala con `npm ci` y copia `app.js`, `descuentos.js` y `tests/*.js` sobre `src/`.
+- Solución de referencia: `pistas/javascript/soluciones/ej4/` (35 pruebas; cobertura de `descuentos.js`: 100 %). Para probarla sin tocar `src/`, copia la pista a una carpeta temporal, instala con `npm ci` y copia `app.js`, `descuentos.js` y `tests/*.js` sobre `src/`.
 - Señal de alerta adicional: el agente cambia `toBe` por `toBeCloseTo` o `toEqual` para "hacer pasar" una prueba sin entender la diferencia (por ejemplo, con porcentajes decimales). Pregunta si el cambio es legítimo.

@@ -2,7 +2,7 @@
 export default function App() {
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', padding: 24 }}>
-      <h1>FerreMax</h1>
+      <h1>Farmacia Demo</h1>
       <p>Catálogo en construcción.</p>
     </main>
   );

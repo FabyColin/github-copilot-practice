@@ -1,11 +1,11 @@
-"""Reporte de ventas: top de vendedores, ticket promedio por región y total.
+"""Reporte de ventas: top de vendedores, ticket promedio por sucursal y total.
 
 Solución de referencia del Ejercicio 3 (versión legible y corregida).
 """
 import csv
 import sys
 
-REGIONES = ["Norte", "Sur", "Centro", "Occidente"]
+SUCURSALES = ["Norte", "Sur", "Centro", "Occidente"]
 
 
 def leer_ventas(ruta):
@@ -22,16 +22,16 @@ def totales_por_vendedor(ventas):
     return totales
 
 
-def ticket_promedio_por_region(ventas):
-    acumulado = {region: {"monto": 0.0, "ventas": 0} for region in REGIONES}
+def ticket_promedio_por_sucursal(ventas):
+    acumulado = {sucursal: {"monto": 0.0, "ventas": 0} for sucursal in SUCURSALES}
     for venta in ventas:
-        region = acumulado[venta["region"]]
-        region["monto"] += float(venta["monto"])
-        region["ventas"] += 1
+        sucursal = acumulado[venta["sucursal"]]
+        sucursal["monto"] += float(venta["monto"])
+        sucursal["ventas"] += 1
     # Bug 3 corregido: sin ventas no hay promedio, en lugar de dividir entre cero
     return {
-        region: (datos["monto"] / datos["ventas"] if datos["ventas"] else None)
-        for region, datos in acumulado.items()
+        sucursal: (datos["monto"] / datos["ventas"] if datos["ventas"] else None)
+        for sucursal, datos in acumulado.items()
     }
 
 
@@ -44,9 +44,9 @@ def imprimir_reporte(ventas):
     for posicion, (vendedor, datos) in enumerate(ranking[:3], start=1):
         print(posicion, vendedor, datos["monto"], datos["ventas"])
 
-    print("TICKET PROMEDIO POR REGION")
-    for region, promedio in ticket_promedio_por_region(ventas).items():
-        print(region, "sin ventas" if promedio is None else round(promedio, 2))
+    print("TICKET PROMEDIO POR SUCURSAL")
+    for sucursal, promedio in ticket_promedio_por_sucursal(ventas).items():
+        print(sucursal, "sin ventas" if promedio is None else round(promedio, 2))
 
     print("TOTAL", sum(datos["monto"] for datos in totales.values()))
 
