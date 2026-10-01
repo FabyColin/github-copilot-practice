@@ -1,13 +1,20 @@
 version: 2
 updates:
   - package-ecosystem: "pip"
-    directory: "/src"
+    directory: "/pistas/python/src"
     schedule:
       interval: "monthly"
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "monthly"
+  - package-ecosystem: "npm"
+    directory: "/pistas/javascript"
+    schedule:
+      interval: "monthly"
+    groups:
+      dependencias:
+        patterns: ["*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

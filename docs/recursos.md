@@ -10,6 +10,9 @@
 - [Copilot code review](https://docs.github.com/copilot/concepts/code-review/code-review)
 - [Planes y precios](https://github.com/features/copilot/plans)
 - [Model Context Protocol](https://modelcontextprotocol.io)
+- [Jest](https://jestjs.io/es-ES/docs/getting-started) y [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) (pista JavaScript)
+- [React](https://react.dev) y [Vite](https://vite.dev) (pista JavaScript)
+- [pytest](https://docs.pytest.org) y [Flask](https://flask.palletsprojects.com) (pista Python)
 
 ## Referencia rápida de atajos (VS Code, Windows/Linux)
 

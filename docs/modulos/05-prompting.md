@@ -2,6 +2,10 @@
 
 **Duración:** 15 min · **Tipo:** teoría. Se practica en el [Ejercicio 2](../ejercicios/ej2-chat-contexto-prompting.md).
 
+
+!!! note "Pistas Python y JavaScript"
+    Los ejemplos de este módulo usan archivos de la pista Python (`src/app.py`, `pytest`). En la pista JavaScript el equivalente es `src/app.js` con Jest: consulta las [equivalencias](../pistas.md#equivalencias-de-archivos).
+
 ## Anatomía de un buen prompt
 
 | Elemento | Pregunta que responde | Ejemplo |

@@ -6,6 +6,9 @@ htmlcov/
 .venv/
 venv/
 site/
+node_modules/
+dist/
+coverage/
 *.db
 .env
 .DS_Store

@@ -24,6 +24,10 @@
 - ¿Verifican ejecutando? El Bug 1 es silencioso: solo se detecta calculando a mano.
 - ¿Copilot "arregla" el Bug 3 con un `try/except` que oculta el problema? Úsalo como ejemplo de arreglo superficial.
 
+## Si el grupo es de la pista JavaScript
+
+Los tres bugs son silenciosos (el Bug 3 imprime `NaN` en lugar de fallar). Insiste en **verificar la salida a mano**. Detalle en [`bugs.md`](bugs.md#pista-javascript-reporte_ventasjs).
+
 ## Cierre (2 min)
 
 Pregunta: "¿Qué bug les costó más y por qué?" (casi siempre el Bug 1 o el 2: no lanzan error).

@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  material:
+  python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,18 +14,57 @@ jobs:
         with:
           python-version: "3.12"
       - name: Instalar dependencias
-        run: pip install -r src/requirements.txt -r requirements.txt
+        run: pip install -r pistas/python/src/requirements.txt
       - name: Pruebas de la app base
-        run: pytest src
-      - name: Soluciones de referencia (ej1)
+        run: pytest pistas/python/src
+      - name: Solución de referencia (ej1)
         run: |
-          cp soluciones/ej1/inventario.py ejercicios/ej1-autocompletado/inventario.py
-          pytest ejercicios/ej1-autocompletado
-      - name: Soluciones de referencia (ej4)
+          mkdir /tmp/ej1 && cp pistas/python/ejercicios/ej1-autocompletado/test_inventario.py /tmp/ej1/
+          cp pistas/python/soluciones/ej1/inventario.py /tmp/ej1/
+          cd /tmp/ej1 && pytest
+      - name: Solución de referencia (ej4)
         run: |
-          mkdir /tmp/ej4 && cp -r src/. /tmp/ej4/
-          cp soluciones/ej4/app.py soluciones/ej4/descuentos.py /tmp/ej4/
-          cp soluciones/ej4/tests/*.py /tmp/ej4/tests/
+          mkdir /tmp/ej4 && cp -r pistas/python/src/. /tmp/ej4/
+          cp pistas/python/soluciones/ej4/app.py pistas/python/soluciones/ej4/descuentos.py /tmp/ej4/
+          cp pistas/python/soluciones/ej4/tests/*.py /tmp/ej4/tests/
           cd /tmp/ej4 && pytest --cov=descuentos --cov-fail-under=85
+
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Copiar pista a un directorio de trabajo
+        run: cp -r pistas/javascript /tmp/js
+      - name: Instalar dependencias
+        run: cd /tmp/js && npm ci
+      - name: Pruebas de la app base
+        run: cd /tmp/js && npm test
+      - name: Compilar la interfaz
+        run: cd /tmp/js && npm run build
+      - name: Soluciones de referencia (ej1, ej4, ej5)
+        run: |
+          cd /tmp/js
+          cp soluciones/ej1/inventario.js ejercicios/ej1-autocompletado/inventario.js
+          npm run test:ej
+          cp soluciones/ej4/app.js soluciones/ej4/descuentos.js src/
+          cp soluciones/ej4/tests/*.js src/tests/
+          cp soluciones/ej5/Catalogo.jsx soluciones/ej5/Catalogo.test.jsx soluciones/ej5/catalogo.css soluciones/ej5/App.jsx web/
+          npx jest --selectProjects server web --coverage --collectCoverageFrom=src/descuentos.js --coverageThreshold='{"global":{"lines":85}}'
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
       - name: Compilar documentación
         run: mkdocs build --strict
+      - name: Generar repos de alumnos (ambas pistas)
+        run: |
+          python scripts/build_alumnos.py --pista python --salida /tmp/alumnos-python
+          python scripts/build_alumnos.py --pista javascript --salida /tmp/alumnos-react

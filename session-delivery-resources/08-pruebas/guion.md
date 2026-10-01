@@ -10,7 +10,7 @@
 | 3–6 | Iterar hasta verde: "explica si falla la prueba o el código **antes** de corregir" |
 | 6–10 | Casos borde y cobertura. Anuncia la **mutación manual** |
 
-Aclara que el temario habla de Jest y aquí se usa **pytest** (mismo concepto).
+Aclara que el temario habla de Jest (pista JavaScript) y que la pista Python usa **pytest** (mismo concepto).
 
 ## Ejercicio 4 (55 min)
 
@@ -50,3 +50,11 @@ cd /tmp/ej4 && pytest --cov=descuentos
 | Pruebas sin `assert` útil | "Cobertura no es calidad" |
 | El agente toca `templates/` o `requirements.txt` | "Recuerda el alcance: dilo en el prompt" |
 | Cupón vencido no se prueba | "¿Qué pasa el último día de vigencia?" |
+
+## Pista JavaScript
+
+- Pruebas: `npm test` (proyectos `server` y `web`). Cobertura de la lógica nueva:
+  `npx jest --selectProjects server --coverage --collectCoverageFrom=src/descuentos.js`
+- Archivos permitidos: `src/app.js`, `src/descuentos.js` y pruebas en `src/tests/`.
+- Solución de referencia: `pistas/javascript/soluciones/ej4/` (26 pruebas; cobertura de `descuentos.js`: 100 %). Para probarla sin tocar `src/`, copia la pista a una carpeta temporal, instala con `npm ci` y copia `app.js`, `descuentos.js` y `tests/*.js` sobre `src/`.
+- Señal de alerta adicional: el agente cambia `toBe` por `toBeCloseTo` o `toEqual` para "hacer pasar" una prueba sin entender la diferencia (por ejemplo, con porcentajes decimales). Pregunta si el cambio es legítimo.

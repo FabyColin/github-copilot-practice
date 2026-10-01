@@ -1,6 +1,6 @@
 # Guía del instructor
 
-Curso de 1 día (09:00 a 16:50, 7 h 50 min efectivas) sobre GitHub Copilot con Python y Flask. Esta carpeta tiene todo lo necesario para impartirlo.
+Curso de 1 día (09:00 a 16:50, 7 h 50 min efectivas) sobre GitHub Copilot, con **dos pistas** de ejercicios: **Python** (Flask y pytest) y **JavaScript** (Express, React y Jest). Esta carpeta tiene todo lo necesario para impartirlo.
 
 ## Contenido
 
@@ -9,6 +9,39 @@ Curso de 1 día (09:00 a 16:50, 7 h 50 min efectivas) sobre GitHub Copilot con P
 | `00-setup/` | Checklist previo, día del curso y cierre; solución de problemas |
 | `01-fundamentos/` a `09-imagen-a-codigo/` | Guion de cada módulo: tiempos, qué decir, qué demostrar, errores frecuentes |
 | `10-mas-alla-del-ide/` | Material de la demo: issue de ejemplo y configuración MCP |
+
+## Qué pista elegir
+
+Los módulos de teoría, la agenda y los tiempos son iguales. Pregunta al grupo con anticipación (idealmente al inscribirse):
+
+| Si el grupo... | Pista |
+|---|---|
+| Trabaja con datos, automatización o backend en Python | **Python** |
+| Es de desarrollo web o front-end | **JavaScript** (incluye React) |
+| Es mixto | La que domine la mayoría; los ejercicios son equivalentes. Mantén la otra como respaldo |
+
+El temario original menciona Jest y React: la pista JavaScript los cumple tal cual y la pista Python es la adaptación.
+
+## Organización del repositorio
+
+```text
+docs/                 teoría y enunciados (compartidos; ejercicios en python/ y javascript/)
+pistas/python/        src, ejercicios, soluciones
+pistas/javascript/    src (API), web (React), ejercicios, soluciones
+session-delivery-resources/   esta guía
+scripts/build_alumnos.py      genera un repo de alumnos por pista
+```
+
+Los repos de alumnos **no se editan a mano**: se regeneran con el script (ver abajo).
+
+## Publicar los repos de alumnos
+
+```bash
+python scripts/build_alumnos.py --pista python     --salida ../copilot-fundamentos-alumnos-python     --forzar
+python scripts/build_alumnos.py --pista javascript --salida ../copilot-fundamentos-alumnos-react      --forzar
+```
+
+Después, en cada carpeta generada: `git add -A`, `git commit` y `git push`. El script conserva `.git`, deja solo la pista elegida, quita `soluciones/` y esta guía, y falla si queda alguna referencia al instructor.
 
 ## Agenda
 
@@ -57,15 +90,15 @@ El criterio más valioso es **Revisión crítica**: un alumno que acepta todo si
 
 ## Soluciones de referencia
 
-| Ejercicio | Dónde |
-|---|---|
-| 1 | `soluciones/ej1/inventario.py` |
-| 2 | `soluciones/ej2/` |
-| 3 | `soluciones/ej3/reporte_ventas.py` y `06-comprension-codigo/bugs.md` |
-| 4 | `soluciones/ej4/` (app, descuentos y pruebas; cobertura 100 % de `descuentos.py`) |
-| 5 | `soluciones/ej5/` |
+| Ejercicio | Python (`pistas/python/soluciones/`) | JavaScript (`pistas/javascript/soluciones/`) |
+|---|---|---|
+| 1 | `ej1/inventario.py` | `ej1/inventario.js` |
+| 2 | `ej2/` (utilidades, instrucciones, prompt file) | `ej2/` (ídem) |
+| 3 | `ej3/reporte_ventas.py` y [`bugs.md`](06-comprension-codigo/bugs.md) | `ej3/reporte_ventas.js` y [`bugs.md`](06-comprension-codigo/bugs.md) |
+| 4 | `ej4/` (app, descuentos y pruebas; cobertura 100 % de `descuentos.py`) | `ej4/` (app, descuentos y pruebas; cobertura 100 % de `descuentos.js`) |
+| 5 | `ej5/` (plantilla Jinja) | `ej5/` (componente React y su prueba) |
 
-El flujo de CI valida automáticamente las soluciones de los ejercicios 1 y 4.
+El flujo de CI valida automáticamente las soluciones de los ejercicios 1 y 4 en Python, y de los ejercicios 1, 4 y 5 en JavaScript, y comprueba que los dos repos de alumnos se puedan generar.
 
 ## Aviso importante
 

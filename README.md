@@ -1,6 +1,13 @@
-# GitHub Copilot: Fundamentos (curso de 1 día)
+# GitHub Copilot: Fundamentos (curso de 1 día) · repositorio del instructor
 
-Curso práctico de 8 horas para aprender a trabajar con GitHub Copilot en el flujo de desarrollo diario, desde el autocompletado hasta el modo Agent, usando **Python y Flask**.
+Curso práctico de 8 horas para aprender a trabajar con GitHub Copilot en el flujo de desarrollo diario, desde el autocompletado hasta el modo Agent. Tiene **dos pistas** de ejercicios equivalentes:
+
+| Pista | Stack | Pruebas | Repo de alumnos |
+|---|---|---|---|
+| **Python** | Flask | pytest | `copilot-fundamentos-alumnos-python` |
+| **JavaScript** | Express y React (Vite) | Jest | `copilot-fundamentos-alumnos-react` |
+
+Este repositorio es la **fuente única**: contiene la teoría, las dos pistas, las soluciones y la guía del instructor. Los repos de alumnos se generan desde aquí con un script y **no se editan a mano**.
 
 ## Qué aprenderás
 
@@ -10,22 +17,25 @@ Curso práctico de 8 horas para aprender a trabajar con GitHub Copilot en el flu
 - Escribir prompts efectivos e iterar sobre las respuestas.
 - Entender y corregir código legacy.
 - Delegar cambios multi-archivo al agente con control y revisión humana.
-- Generar pruebas con pytest y llevarlas a verde.
+- Generar pruebas y llevarlas a verde.
 - Pasar de un mockup a código.
 - Conocer el cloud agent, Copilot code review y MCP (demo del instructor).
 
-## Cómo está organizado el repositorio
+## Organización
 
-| Carpeta | Contenido |
-|---|---|
-| `docs/` | Sitio del curso (MkDocs): módulos, ejercicios, agenda y recursos |
-| `ejercicios/` | Archivos de arranque de los 5 ejercicios |
-| `soluciones/` | Soluciones de referencia (para el instructor) |
-| `src/` | Tienda de productos en Flask, proyecto base de varios ejercicios |
-| `session-delivery-resources/` | Guía del instructor: guion por módulo, setup y rúbrica |
-| `.devcontainer/` | Entorno listo para Codespaces o Dev Containers |
+```text
+docs/                         Teoría (compartida) y enunciados: ejercicios/python y ejercicios/javascript
+pistas/
+  python/                     src (Flask), ejercicios, soluciones
+  javascript/                 src (Express), web (React), ejercicios, soluciones
+session-delivery-resources/   Guía del instructor: guion por módulo, setup, rúbrica, bugs sembrados
+scripts/
+  build_alumnos.py            Genera el repo de alumnos de una pista
+  plantillas/                 README, entorno y CI de cada repo de alumnos
+.devcontainer/                Entorno del instructor (Python y Node)
+```
 
-## Los 5 ejercicios
+## Los 5 ejercicios (mismos objetivos y tiempos en ambas pistas)
 
 | # | Ejercicio | Módulos | Tiempo |
 |---|---|---|---|
@@ -33,31 +43,46 @@ Curso práctico de 8 horas para aprender a trabajar con GitHub Copilot en el flu
 | 2 | Chat, contexto y prompting | 3, 4, 5 | 30 min |
 | 3 | Rescata el script legacy | 6 | 30 min |
 | 4 | Agent mode: descuentos y pruebas en verde | 7, 8 | 55 min |
-| 5 | Del mockup a la página | 9 | 30 min |
+| 5 | Del mockup al código (plantilla Jinja / componente React) | 9 | 30 min |
 
-## Inicio rápido
+## Inicio rápido (instructor)
 
-La opción recomendada es **GitHub Codespaces** (botón *Code → Codespaces → Create*), que instala todo automáticamente.
+Opción recomendada: **GitHub Codespaces** con el devcontainer del repo (instala Python y Node).
 
-En local:
+Pista Python:
 
 ```bash
-git clone <url-de-este-repositorio>
-cd copilot-fundamentos-curso
-python -m venv .venv && source .venv/bin/activate   # en Windows: .venv\Scripts\activate
-pip install -r src/requirements.txt -r requirements.txt
-pytest src
+pip install -r pistas/python/src/requirements.txt
+pytest pistas/python/src
 ```
 
-Para ver la documentación como sitio web:
+Pista JavaScript:
 
 ```bash
+cd pistas/javascript
+npm install
+npm test
+```
+
+Documentación como sitio web:
+
+```bash
+pip install -r requirements.txt
 mkdocs serve
 ```
 
+## Publicar los repos de alumnos
+
+```bash
+python scripts/build_alumnos.py --pista python     --salida ../copilot-fundamentos-alumnos-python --forzar
+python scripts/build_alumnos.py --pista javascript --salida ../copilot-fundamentos-alumnos-react  --forzar
+```
+
+El script deja solo la pista elegida en la raíz, quita `soluciones/` y la guía del instructor, filtra las pestañas Python/JavaScript de los documentos y falla si queda alguna referencia al material del instructor. Después haz `git add -A`, `git commit` y `git push` en cada carpeta generada (se conserva su `.git`).
+
 ## Para el instructor
 
-Empieza por [`session-delivery-resources/readme.md`](session-delivery-resources/readme.md). Las soluciones están en `soluciones/` y el CI las valida en cada cambio.
+Empieza por [`session-delivery-resources/readme.md`](session-delivery-resources/readme.md). El CI valida las soluciones de ambas pistas y que los dos repos de alumnos se puedan generar.
 
 ## Licencia
 

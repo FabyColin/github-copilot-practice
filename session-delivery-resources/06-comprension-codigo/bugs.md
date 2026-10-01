@@ -1,4 +1,8 @@
-# Bugs sembrados en `reporte_ventas.py` (solo para el instructor)
+# Bugs sembrados en el script legacy (solo para el instructor)
+
+Hay una versión por pista: `reporte_ventas.py` (Python) y `reporte_ventas.js` (JavaScript). Los tres bugs son equivalentes, pero **el Bug 3 se comporta distinto** (ver la sección de JavaScript al final).
+
+## Pista Python: `reporte_ventas.py`
 
 Salida **con bugs** sobre `ventas.csv`: el top calcula mal y termina con `ZeroDivisionError`.
 
@@ -42,3 +46,29 @@ Total general: **35 911.00**.
     | Todo corregido | Marta, Ana, **Luis** (5196.0) | 35911.0 |
 
   Tras corregir el Bug 2, Marta aparece primero; solo al corregir el Bug 1 Luis recupera su tercer lugar (la venta omitida valía 1798.00). Úsalo para mostrar por qué se corrige de uno en uno y se vuelve a ejecutar.
+
+
+## Pista JavaScript: `reporte_ventas.js`
+
+Mismos datos (`ventas.csv`) y mismos bugs. La diferencia: **ninguno detiene el programa**.
+
+| # | Bug | Código | Síntoma | Corrección |
+|---|---|---|---|---|
+| 1 | **Off-by-one** | `for (var i = 0; i < r.length - 1; i++)` | Falta la venta del 30-ene (Luis, 1798): totales de Luis y de Sur menores | `i < r.length` o `for...of` |
+| 2 | **Orden por texto** | `String(b[1][0]) > String(a[1][0]) ? 1 : -1` | El top queda mal: Marta (17841) queda fuera porque `"17841"` < `"3399"` como cadenas | `b[1][0] - a[1][0]` |
+| 3 | **`0 / 0` da `NaN`** | `g[k][0] / g[k][1]` | La región `Occidente` imprime `NaN` en vez de fallar | Tratar el caso sin ventas (mostrar "sin ventas"); no convertir `NaN` en `0` |
+
+### Salida real al corregir uno por uno
+
+| Estado | Top 3 | Ticket Occidente | Total |
+|---|---|---|---|
+| Original | Ana (9475), Jorge (3399), Luis (3398) | `NaN` | 34113 |
+| Solo Bug 2 | **Marta**, Ana, Jorge | `NaN` | 34113 |
+| Bugs 2 + 1 | Marta, Ana, **Luis (5196)** | `NaN` | 35911 |
+| Todo corregido | Marta, Ana, Luis | sin ventas | 35911 |
+
+### Cómo discutirlo
+
+- En JavaScript no hay un `traceback` que delate el Bug 3: hay que **mirar la salida**. Es la lección del ejercicio.
+- Si Copilot propone `|| 0` para el `NaN`, el ticket de Occidente aparece como `0`: se ve "bien" pero es información falsa (no es un promedio de cero, es que no hubo ventas).
+- `NaN` contagia: cualquier operación posterior con él también da `NaN`. Úsalo para explicar por qué conviene validar antes de operar.

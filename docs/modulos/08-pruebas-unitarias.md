@@ -2,14 +2,25 @@
 
 **Duración:** 10 min teoría. Se practica en el [Ejercicio 4](../ejercicios/ej4-agent-descuentos.md).
 
-!!! note "Nota sobre el temario"
-    El temario original menciona Jest (JavaScript). Este curso usa **Python**, así que el equivalente es **pytest**. Los conceptos son los mismos.
+El temario original usa **Jest** (JavaScript). La pista Python usa **pytest**, su equivalente. Los conceptos son los mismos.
 
 ## Generación de pruebas con `/tests`
 
 1. Selecciona la función o abre el archivo.
-2. Escribe `/tests` (opcionalmente con instrucciones: `/tests usa pytest y parametrize`).
+2. Escribe `/tests` (opcionalmente con instrucciones).
 3. **Lee** las pruebas generadas antes de aceptarlas.
+
+=== "JavaScript (Jest)"
+
+    ```text
+    /tests usa Jest y test.each para los casos de frontera
+    ```
+
+=== "Python (pytest)"
+
+    ```text
+    /tests usa pytest y parametrize
+    ```
 
 Revisa que cada prueba:
 
@@ -22,16 +33,24 @@ Revisa que cada prueba:
 En modo Agent:
 
 ```text
-Genera pruebas para descuentos.py con pytest y ejecútalas.
+Genera pruebas para descuentos con el framework del proyecto y ejecútalas.
 Si alguna falla, explica si el error está en la prueba o en el código antes de corregir.
 ```
 
 Ese **"antes de corregir"** es clave: si Copilot modifica la prueba para que pase, pierdes su valor.
 
-```bash
-cd src
-pytest -q
-```
+=== "JavaScript (Jest)"
+
+    ```bash
+    npm test
+    ```
+
+=== "Python (pytest)"
+
+    ```bash
+    cd src
+    pytest -q
+    ```
 
 ## Casos borde y cobertura
 
@@ -40,18 +59,24 @@ Pide explícitamente casos borde:
 | Categoría | Ejemplos |
 |---|---|
 | Límites | 0, 1, exactamente el umbral (9 vs. 10 unidades) |
-| Inválidos | Negativos, `None`, tipos incorrectos |
+| Inválidos | Negativos, `null`/`None`, tipos incorrectos |
 | Fechas | El último día de vigencia, vencido ayer |
 | Combinaciones | Dos descuentos que superan el tope |
 
-Cobertura:
+=== "JavaScript (Jest)"
 
-```bash
-pytest --cov=descuentos --cov-report=term-missing
-```
+    ```bash
+    npx jest --selectProjects server --coverage --collectCoverageFrom=src/descuentos.js
+    ```
+
+=== "Python (pytest)"
+
+    ```bash
+    pytest --cov=descuentos --cov-report=term-missing
+    ```
 
 !!! warning
-    La cobertura mide líneas ejecutadas, no calidad. Una prueba sin `assert` da 100 % de cobertura y no verifica nada.
+    La cobertura mide líneas ejecutadas, no calidad. Una prueba sin `assert` o `expect` da 100 % de cobertura y no verifica nada.
 
 ### Truco de validación: mutación manual
 

@@ -1,11 +1,12 @@
 {
-  "name": "Curso GitHub Copilot - Fundamentos",
+  "name": "Curso GitHub Copilot - Instructor (Python y JavaScript)",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" },
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "postCreateCommand": "pip install -r src/requirements.txt -r requirements.txt",
-  "forwardPorts": [5000, 8000],
+  "postCreateCommand": "pip install -r pistas/python/src/requirements.txt -r requirements.txt && cd pistas/javascript && npm install",
+  "forwardPorts": [5000, 5173, 8000],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -13,12 +14,13 @@
         "GitHub.copilot-chat",
         "GitHub.vscode-pull-request-github",
         "ms-python.python",
-        "ms-python.vscode-pylance"
+        "ms-python.vscode-pylance",
+        "orta.vscode-jest"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "python.testing.pytestEnabled": true,
-        "python.testing.pytestArgs": ["src"]
+        "python.testing.pytestArgs": ["pistas/python/src"]
       }
     }
   }

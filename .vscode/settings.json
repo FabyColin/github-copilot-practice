@@ -1,6 +1,7 @@
 {
   "python.testing.pytestEnabled": true,
-  "python.testing.pytestArgs": ["src"],
+  "python.testing.pytestArgs": ["pistas/python/src"],
+  "jest.rootPath": "pistas/javascript",
   "editor.inlineSuggest.enabled": true,
   "github.copilot.nextEditSuggestions.enabled": true,
   "chat.promptFiles": true

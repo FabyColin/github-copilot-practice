@@ -2,6 +2,10 @@
 
 **Duración:** 10 min teoría + 30 min de [Ejercicio 3](../ejercicios/ej3-codigo-legacy.md)
 
+
+!!! note "Pistas Python y JavaScript"
+    Los ejemplos de este módulo usan archivos de la pista Python (`src/app.py`, `pytest`). En la pista JavaScript el equivalente es `src/app.js` con Jest: consulta las [equivalencias](../pistas.md#equivalencias-de-archivos).
+
 ## Explicar código legacy desconocido
 
 Estrategia en tres pasos, de lo general a lo particular:

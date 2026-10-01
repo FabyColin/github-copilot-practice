@@ -2,6 +2,10 @@
 
 **Duración:** 20 min · **Tipo:** teoría + demo
 
+
+!!! note "Pistas Python y JavaScript"
+    Los ejemplos de este módulo usan archivos de la pista Python (`src/app.py`, `pytest`). En la pista JavaScript el equivalente es `src/app.js` con Jest: consulta las [equivalencias](../pistas.md#equivalencias-de-archivos).
+
 Copilot responde con lo que ve. Controlar el contexto es la forma más barata de mejorar los resultados.
 
 ## Variables de contexto

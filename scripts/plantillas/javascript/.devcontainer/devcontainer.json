@@ -1,0 +1,19 @@
+{
+  "name": "Curso GitHub Copilot - Pista JavaScript (React)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "npm install",
+  "forwardPorts": [5000, 5173],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github",
+        "orta.vscode-jest"
+      ]
+    }
+  }
+}

@@ -1,15 +1,22 @@
 site_name: GitHub Copilot - Fundamentos (curso de 1 día)
-site_description: Material del curso, ejercicios y guía del instructor
+site_description: Material del curso, ejercicios (Python y JavaScript) y guía del instructor
 docs_dir: docs
 theme:
   name: material
   language: es
   palette:
     primary: indigo
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 nav:
   - Inicio: index.md
   - Agenda: agenda.md
   - Requisitos previos: requisitos.md
+  - Pistas Python y JavaScript: pistas.md
   - Módulos:
       - 1. Fundamentos: modulos/01-fundamentos.md
       - 2. Autocompletado: modulos/02-autocompletado.md
@@ -27,4 +34,16 @@ nav:
       - 3. Código legacy: ejercicios/ej3-codigo-legacy.md
       - 4. Agent mode y pruebas: ejercicios/ej4-agent-descuentos.md
       - 5. Imagen a código: ejercicios/ej5-imagen-a-codigo.md
+      - Pista Python:
+          - 1. Autocompletado: ejercicios/python/ej1-autocompletado.md
+          - 2. Chat, contexto y prompting: ejercicios/python/ej2-chat-contexto-prompting.md
+          - 3. Código legacy: ejercicios/python/ej3-codigo-legacy.md
+          - 4. Agent mode y pruebas: ejercicios/python/ej4-agent-descuentos.md
+          - 5. Imagen a código: ejercicios/python/ej5-imagen-a-codigo.md
+      - Pista JavaScript:
+          - 1. Autocompletado: ejercicios/javascript/ej1-autocompletado.md
+          - 2. Chat, contexto y prompting: ejercicios/javascript/ej2-chat-contexto-prompting.md
+          - 3. Código legacy: ejercicios/javascript/ej3-codigo-legacy.md
+          - 4. Agent mode y pruebas: ejercicios/javascript/ej4-agent-descuentos.md
+          - 5. Imagen a código: ejercicios/javascript/ej5-imagen-a-codigo.md
   - Recursos: recursos.md

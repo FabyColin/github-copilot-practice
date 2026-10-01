@@ -2,6 +2,10 @@
 
 **Duración:** 20 min · **Tipo:** teoría + demo. Se practica en el [Ejercicio 4](../ejercicios/ej4-agent-descuentos.md).
 
+
+!!! note "Pistas Python y JavaScript"
+    Los ejemplos de este módulo usan archivos de la pista Python (`src/app.py`, `pytest`). En la pista JavaScript el equivalente es `src/app.js` con Jest: consulta las [equivalencias](../pistas.md#equivalencias-de-archivos).
+
 El modo Agent trabaja por ti en varios pasos: lee archivos, edita varios a la vez, ejecuta comandos en la terminal, ve los errores y corrige. **Tú sigues al mando.**
 
 ## Planear antes de ejecutar

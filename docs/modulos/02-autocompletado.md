@@ -2,6 +2,10 @@
 
 **Duración:** 100 min · **Tipo:** teoría breve + 3 ejercicios aislados + ejercicio completo de 50 min
 
+
+!!! note "Pistas Python y JavaScript"
+    Los ejemplos de este módulo usan archivos de la pista Python (`src/app.py`, `pytest`). En la pista JavaScript el equivalente es `src/app.js` con Jest: consulta las [equivalencias](../pistas.md#equivalencias-de-archivos).
+
 Todos los archivos están en `ejercicios/ej1-autocompletado/`. Enunciados en el [Ejercicio 1](../ejercicios/ej1-autocompletado.md).
 
 ## 2.1 Sugerencias inline (ghost text)
@@ -18,7 +22,7 @@ Mientras escribes, Copilot muestra texto gris con lo que cree que sigue.
 
 **Qué influye en la calidad:** nombres claros, firmas con tipos, archivos abiertos relacionados y código cercano.
 
-**Ejercicio aislado A (10 min):** `tramo_a_ghost_text.py`.
+**Ejercicio aislado A (10 min):** `tramo_a_ghost_text.py` (JS: `tramoA_ghostText.js`).
 
 ## 2.2 Desarrollo guiado por comentarios
 
@@ -33,7 +37,7 @@ Patrón útil:
 !!! tip
     Si Copilot falla, mejora el comentario antes de editar el código a mano. Así aprendes a comunicar la intención.
 
-**Ejercicio aislado B (10 min):** `tramo_b_comentarios.py`.
+**Ejercicio aislado B (10 min):** `tramo_b_comentarios.py` (JS: `tramoB_comentarios.js`).
 
 ## 2.3 Next Edit Suggestions (NES)
 
@@ -43,11 +47,11 @@ NES predice **el siguiente cambio que harás**, incluso en otra línea del archi
 - Se acepta con `Tab`; una flecha en el margen indica que hay una edición sugerida más abajo.
 - **Revisa cada edición**: NES propone, no garantiza que sea correcta.
 
-**Ejercicio aislado C (10 min):** `tramo_c_nes.py`.
+**Ejercicio aislado C (10 min):** `tramo_c_nes.py` (JS: `tramoC_nes.js`).
 
 ## 2.4 Ejercicio completo (50 min)
 
-Construcción de `inventario.py` usando **solo autocompletado**. Validación con `pytest`. Ver [Ejercicio 1](../ejercicios/ej1-autocompletado.md).
+Construcción de `inventario.py` (Python) o `inventario.js` (JavaScript) usando **solo autocompletado**. Validación con `pytest` o `jest`. Ver [Ejercicio 1](../ejercicios/ej1-autocompletado.md).
 
 ## Puntos clave
 

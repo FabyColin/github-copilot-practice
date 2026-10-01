@@ -1,0 +1,37 @@
+{
+  "name": "copilot-fundamentos-javascript",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pista JavaScript del curso GitHub Copilot: Fundamentos (Express, React y Jest)",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "vite",
+    "build": "vite build",
+    "test": "jest --selectProjects server web",
+    "test:cov": "jest --selectProjects server web --coverage",
+    "test:ej": "jest --selectProjects ejercicios"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^8.0.6",
+    "@babel/preset-env": "^8.0.6",
+    "@babel/preset-react": "^8.0.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "babel-jest": "^30.5.2",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "supertest": "^7.3.0",
+    "vite": "^8.3.2"
+  }
+}

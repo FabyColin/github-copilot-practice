@@ -1,0 +1,77 @@
+# Ejercicio 4: Agent mode, descuentos y pruebas en verde (JavaScript)
+
+**Módulos:** [7. Agent mode](../../modulos/07-agent-mode.md) y [8. Pruebas unitarias](../../modulos/08-pruebas-unitarias.md) · **Tiempo:** 55 min
+**Proyecto:** `src/` (API Express)
+
+## Escenario
+
+El endpoint `POST /orders` calcula el total del pedido sin descuentos. Negocio pide:
+
+### Reglas de negocio
+
+| Regla | Detalle |
+|---|---|
+| **Descuento por volumen** | 10 a 24 unidades totales: 5 %. 25 o más: 10 % |
+| **Cupones** | `BIENVENIDA10` (10 %) y `VERANO15` (15 %). Se envían en el campo `cupon` (sin distinguir mayúsculas) |
+| **Cupón vencido o inexistente** | El pedido se rechaza con `400` y un mensaje claro |
+| **Acumulación** | Volumen y cupón se suman, con un **tope total del 30 %** |
+| **Validación** | `cantidad` debe ser un entero mayor que cero; si no, `400` |
+| **Respuesta** | Incluye `subtotal`, `descuento`, `porcentaje_descuento` y `total` |
+
+### Restricciones
+
+- La lógica de descuentos va en un módulo nuevo `src/descuentos.js`.
+- Solo se modifica `src/app.js` y se crean `src/descuentos.js` y archivos de pruebas.
+- **No** se modifican los endpoints de `/products` ni se agregan dependencias.
+
+## Parte 1: planear (10 min)
+
+1. Haz `git commit` (o crea una rama) para tener un punto de retorno.
+2. En modo **Plan**, pega las reglas y las restricciones.
+3. Lee el plan. Ajusta al menos una cosa (por ejemplo, la estructura de datos de los cupones).
+4. **No ejecutes todavía.**
+
+## Parte 2: ejecutar con control (20 min)
+
+1. Pasa a modo **Agent** y ejecuta el plan.
+2. Lee **cada comando de terminal** antes de aprobarlo.
+3. Revisa los diffs por archivo. Practica **Undo** en al menos un cambio que no te guste.
+4. Prueba un **checkpoint**: restaura uno y vuelve a avanzar.
+5. Verifica con `git status` que **solo** se tocaron los archivos permitidos.
+
+Prueba manual (en una terminal `npm start`, en otra):
+
+```bash
+curl -X POST localhost:5000/orders -H "Content-Type: application/json" \
+  -d '{"items":[{"product_id":"p-003","cantidad":10}],"cupon":"BIENVENIDA10"}'
+```
+
+## Parte 3: pruebas en verde (25 min)
+
+1. Con `/tests` genera pruebas con Jest para `descuentos.js` y, con supertest, para `POST /orders` (en `src/tests/`).
+2. Pide al agente que las ejecute **y que explique si el fallo está en la prueba o en el código antes de corregir**.
+3. Pide explícitamente casos borde: 9 vs. 10 unidades, el tope del 30 %, cantidad negativa, cupón vencido, subtotal cero.
+4. Mide cobertura:
+
+```bash
+npx jest --selectProjects server --coverage --collectCoverageFrom=src/descuentos.js
+```
+
+5. **Mutación manual:** cambia un `>=` por `>` en `descuentos.js`. ¿Falla alguna prueba? Si no, tus pruebas son débiles. Revierte el cambio.
+
+## Criterios de aceptación
+
+- [ ] Todas las pruebas pasan (`npm test`).
+- [ ] Cobertura de `descuentos.js` **mayor o igual al 85 %**.
+- [ ] `git status` muestra solo los archivos permitidos.
+- [ ] La prueba de mutación manual hizo fallar al menos una prueba.
+- [ ] Un cupón vencido y una cantidad negativa devuelven `400`.
+- [ ] Puedes explicar el diff completo.
+
+## Reflexión final (3 líneas)
+
+¿Qué hizo el agente que **no** pediste? ¿Qué corregiste? ¿Qué harías distinto en el prompt?
+
+---
+
+*Solución de referencia: `soluciones/ej4/` (solo para el instructor).*
