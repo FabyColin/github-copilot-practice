@@ -1,0 +1,30 @@
+site_name: GitHub Copilot - Fundamentos (curso de 1 día)
+site_description: Material del curso, ejercicios y guía del instructor
+docs_dir: docs
+theme:
+  name: material
+  language: es
+  palette:
+    primary: indigo
+nav:
+  - Inicio: index.md
+  - Agenda: agenda.md
+  - Requisitos previos: requisitos.md
+  - Módulos:
+      - 1. Fundamentos: modulos/01-fundamentos.md
+      - 2. Autocompletado: modulos/02-autocompletado.md
+      - 3. Chat: modulos/03-chat.md
+      - 4. Contextualización: modulos/04-contextualizacion.md
+      - 5. Prompting: modulos/05-prompting.md
+      - 6. Comprensión y corrección: modulos/06-comprension-y-correccion.md
+      - 7. Agent mode: modulos/07-agent-mode.md
+      - 8. Pruebas unitarias: modulos/08-pruebas-unitarias.md
+      - 9. Imagen a código: modulos/09-imagen-a-codigo.md
+      - 10. Más allá del IDE: modulos/10-mas-alla-del-ide.md
+  - Ejercicios:
+      - 1. Autocompletado: ejercicios/ej1-autocompletado.md
+      - 2. Chat, contexto y prompting: ejercicios/ej2-chat-contexto-prompting.md
+      - 3. Código legacy: ejercicios/ej3-codigo-legacy.md
+      - 4. Agent mode y pruebas: ejercicios/ej4-agent-descuentos.md
+      - 5. Imagen a código: ejercicios/ej5-imagen-a-codigo.md
+  - Recursos: recursos.md

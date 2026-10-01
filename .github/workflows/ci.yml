@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  material:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: pip install -r src/requirements.txt -r requirements.txt
+      - name: Pruebas de la app base
+        run: pytest src
+      - name: Soluciones de referencia (ej1)
+        run: |
+          cp soluciones/ej1/inventario.py ejercicios/ej1-autocompletado/inventario.py
+          pytest ejercicios/ej1-autocompletado
+      - name: Soluciones de referencia (ej4)
+        run: |
+          mkdir /tmp/ej4 && cp -r src/. /tmp/ej4/
+          cp soluciones/ej4/app.py soluciones/ej4/descuentos.py /tmp/ej4/
+          cp soluciones/ej4/tests/*.py /tmp/ej4/tests/
+          cd /tmp/ej4 && pytest --cov=descuentos --cov-fail-under=85
+      - name: Compilar documentación
+        run: mkdocs build --strict

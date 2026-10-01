@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FerreMax | Catálogo</title>
+  <style>
+    :root { --azul: #1f2a44; --naranja: #e8731a; --fondo: #f4f6fa; --borde: #dde2ee; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--fondo); color: var(--azul); }
+    header { background: var(--azul); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+    header strong { font-size: 1.8rem; }
+    header nav a { color: #c9d3ee; margin-left: 24px; text-decoration: none; }
+    main { max-width: 1200px; margin: 0 auto; padding: 24px 40px 48px; }
+    .filtros { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+    .filtros input, .filtros select { padding: 14px; font-size: 1rem; border: 2px solid #c4cbd9; border-radius: 10px; background: #fff; }
+    .filtros input { flex: 1 1 260px; }
+    .filtros select { flex: 0 1 280px; }
+    .filtros button { padding: 14px 36px; font-size: 1rem; font-weight: 700; color: #fff; background: var(--naranja); border: 0; border-radius: 10px; cursor: pointer; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .tarjeta { background: #fff; border: 2px solid var(--borde); border-radius: 14px; padding: 16px; }
+    .foto { height: 114px; background: #dfe5f2; border-radius: 10px; display: grid; place-items: center; color: #8a93a6; }
+    .tarjeta h3 { margin: 14px 0 8px; }
+    .etiqueta { display: inline-block; background: #e6edff; color: #2d4fa8; font-size: .85rem; padding: 4px 12px; border-radius: 12px; }
+    .pie { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+    .precio { color: var(--naranja); font-size: 1.4rem; font-weight: 700; }
+    .agregar { background: var(--azul); color: #fff; border: 0; border-radius: 10px; padding: 12px 22px; font-weight: 700; cursor: pointer; }
+    .vacio { text-align: center; padding: 48px 0; color: #6b7487; }
+    @media (max-width: 600px) { header, main { padding-left: 16px; padding-right: 16px; } header nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>FerreMax</strong>
+    <nav><a href="#">Catálogo</a><a href="#">Ofertas</a><a href="#">Contacto</a></nav>
+  </header>
+  <main>
+    <h1>Catálogo de productos</h1>
+    <form class="filtros" id="filtros">
+      <input type="search" id="buscar" placeholder="Buscar producto..." aria-label="Buscar producto">
+      <select id="categoria" aria-label="Categoría">
+        <option value="">Todas las categorías</option>
+        {% for categoria in categorias %}<option>{{ categoria }}</option>{% endfor %}
+      </select>
+      <button type="submit">Filtrar</button>
+    </form>
+    <section class="grid" id="grid"></section>
+    <p class="vacio" id="vacio" hidden>No encontramos productos con esos filtros.</p>
+  </main>
+  <script>
+    const grid = document.getElementById("grid");
+    const vacio = document.getElementById("vacio");
+    const moneda = new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN" });
+
+    function tarjeta(p) {
+      const el = document.createElement("article");
+      el.className = "tarjeta";
+      el.innerHTML = `<div class="foto">foto</div><h3></h3><span class="etiqueta"></span>
+        <div class="pie"><span class="precio"></span><button class="agregar" type="button">Agregar</button></div>`;
+      el.querySelector("h3").textContent = p.nombre;
+      el.querySelector(".etiqueta").textContent = p.categoria;
+      el.querySelector(".precio").textContent = moneda.format(p.precio);
+      return el;
+    }
+
+    async function cargar() {
+      const categoria = document.getElementById("categoria").value;
+      const texto = document.getElementById("buscar").value.trim().toLowerCase();
+      const url = "/products" + (categoria ? "?categoria=" + encodeURIComponent(categoria) : "");
+      const productos = (await (await fetch(url)).json()).filter(p => p.nombre.toLowerCase().includes(texto));
+      grid.replaceChildren(...productos.map(tarjeta));
+      vacio.hidden = productos.length > 0;
+    }
+
+    document.getElementById("filtros").addEventListener("submit", e => { e.preventDefault(); cargar(); });
+    cargar();
+  </script>
+</body>
+</html>
