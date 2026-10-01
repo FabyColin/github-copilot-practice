@@ -345,6 +345,16 @@ content = [
               [("bolt", "Documentación, datos, servicios"), ("alert", "Instala solo fuentes de confianza")]),
      ]},
 
+    {"type": "process_flow",
+     "title": "Opcional: revisa un PR con ojo crítico.",
+     "subtitle": "OPCIONAL · 20 min · fuera de la agenda. Para quien termine antes o quiera practicar después.",
+     "steps": [
+         {"label": "1", "headline": "Revisa tú", "description": "Lee, ejecuta y anota hallazgos", "icon": "target"},
+         {"label": "2", "headline": "Compara", "description": "Pide la revisión a Copilot", "icon": "brain"},
+         {"label": "3", "headline": "Decide", "description": "Aprobar o pedir cambios", "icon": "circle_check"},
+     ],
+     "cta": "\u00bfLas pruebas est\u00e1n en verde? Compru\u00e9balo: no todas las pruebas protegen algo."},
+
     # ---------- Cierre ----------
     {"type": "story",
      "title": "Tres ideas para llevarte.",

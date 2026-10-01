@@ -67,17 +67,17 @@ def filtrar_pestanas(texto: str, pista: str) -> str:
 
 
 def convertir_avisos(texto: str) -> str:
-    """`!!! tip "Titulo"` + cuerpo con sangría -> cita de Markdown (se ve bien en GitHub)."""
+    """`!!! tip "Titulo"` (o `??? tip`) + cuerpo con sangría -> cita de Markdown (se ve bien en GitHub)."""
     lineas = texto.split("\n")
     salida: list[str] = []
     i = 0
     while i < len(lineas):
-        m = re.match(r'^!!! (\w+)(?: "(.*)")?\s*$', lineas[i])
+        m = re.match(r'^(!!!|\?\?\?\+?) (\w+)(?: "(.*)")?\s*$', lineas[i])
         if not m:
             salida.append(lineas[i])
             i += 1
             continue
-        tipo, titulo = m.group(1), m.group(2)
+        marcador, tipo, titulo = m.group(1), m.group(2), m.group(3)
         i += 1
         cuerpo: list[str] = []
         while i < len(lineas) and (lineas[i].startswith("    ") or lineas[i].strip() == ""):
@@ -86,9 +86,14 @@ def convertir_avisos(texto: str) -> str:
         while cuerpo and cuerpo[-1] == "":
             cuerpo.pop()
         encabezado = titulo or TIPO_AVISO.get(tipo, tipo.capitalize())
-        salida.append(f"> **{encabezado}**")
-        salida.append(">")
-        salida.extend(("> " + c).rstrip() for c in cuerpo)
+        if marcador.startswith("???"):  # desplegable: se conserva oculto con <details>
+            salida.append(f"<details>\n<summary><b>{encabezado}</b></summary>\n")
+            salida.extend(cuerpo)
+            salida.append("\n</details>")
+        else:
+            salida.append(f"> **{encabezado}**")
+            salida.append(">")
+            salida.extend(("> " + c).rstrip() for c in cuerpo)
         salida.append("")
     return "\n".join(salida)
 

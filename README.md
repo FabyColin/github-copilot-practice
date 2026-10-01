@@ -44,6 +44,7 @@ scripts/
 | 3 | Rescata el script legacy | 6 | 30 min |
 | 4 | Agent mode: descuentos y pruebas en verde | 7, 8 | 55 min |
 | 5 | Del mockup al código (plantilla Jinja / componente React) | 9 | 30 min |
+| *Opcional* | *Revisa el Pull Request (fuera de la agenda)* | *8, 10* | *20 min* |
 
 ## Inicio rápido (instructor)
 

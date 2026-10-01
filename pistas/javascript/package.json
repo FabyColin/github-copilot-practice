@@ -9,7 +9,7 @@
     "build": "vite build",
     "test": "jest --selectProjects server web",
     "test:cov": "jest --selectProjects server web --coverage",
-    "test:ej": "jest --selectProjects ejercicios"
+    "test:ej": "jest --selectProjects ejercicios --"
   },
   "engines": {
     "node": ">=20"

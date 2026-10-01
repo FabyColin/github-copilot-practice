@@ -33,6 +33,8 @@ Material para alumnos del curso de 1 día. Trabajarás con **Express y React (Vi
 | 4 | [Agent mode: descuentos y pruebas en verde](docs/ejercicios/ej4-agent-descuentos.md) | 55 min |
 | 5 | [Del mockup a un componente React](docs/ejercicios/ej5-imagen-a-codigo.md) | 30 min |
 
+**Opcional:** [Revisa el Pull Request](docs/ejercicios/ej-opcional-revision-pr.md) (20 min). No está en la agenda; es para quien termine antes o quiera practicar después.
+
 Empieza por los [requisitos previos](docs/requisitos.md) y la [agenda](docs/agenda.md).
 
 ## Inicio rápido

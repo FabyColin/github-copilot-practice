@@ -31,3 +31,7 @@ Duración efectiva: 7 h 50 min, con 10 min de holgura para llegar a las 17:00.
 | 4. Agent mode y pruebas | 55 min |
 | 5. Imagen a código | 30 min |
 | **Total** | **3 h 45 min** |
+
+## Ejercicio opcional (fuera del horario)
+
+[Revisa el Pull Request](ejercicios/ej-opcional-revision-pr.md) · 20 min · **No está incluido en la agenda ni en el cálculo de práctica.** Es para quien termine un ejercicio antes de tiempo, o para practicar después del curso.

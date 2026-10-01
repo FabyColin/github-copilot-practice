@@ -18,4 +18,6 @@ Bienvenido al curso de un día. Aquí encontrarás el material de cada módulo, 
 9. [Imagen a código](modulos/09-imagen-a-codigo.md) → [Ejercicio 5](ejercicios/ej5-imagen-a-codigo.md)
 10. [Más allá del IDE](modulos/10-mas-alla-del-ide.md) (demo del instructor)
 
+**Opcional (fuera de la agenda):** [Ejercicio opcional: Revisa el Pull Request](ejercicios/ej-opcional-revision-pr.md), de 20 minutos, para quien termine antes o quiera practicar después del curso.
+
 El curso tiene dos pistas con los mismos ejercicios: **Python** (Flask y pytest) y **JavaScript** (Express, React y Jest). Consulta cómo elegir en [Pistas](pistas.md), la [agenda](agenda.md) con los horarios y los [requisitos previos](requisitos.md).

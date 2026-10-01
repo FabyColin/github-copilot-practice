@@ -22,6 +22,15 @@ jobs:
           mkdir /tmp/ej1 && cp pistas/python/ejercicios/ej1-autocompletado/test_inventario.py /tmp/ej1/
           cp pistas/python/soluciones/ej1/inventario.py /tmp/ej1/
           cd /tmp/ej1 && pytest
+      - name: Ejercicio opcional (revisión de PR)
+        run: |
+          mkdir /tmp/opcional && cp pistas/python/ejercicios/ej-opcional-revision-pr/test_ajuste_stock.py /tmp/opcional/
+          cp pistas/python/ejercicios/ej-opcional-revision-pr/ajuste_stock.py /tmp/opcional/
+          (cd /tmp/opcional && pytest -q)                       # las pruebas débiles del PR pasan
+          mkdir /tmp/opcional-sol && cp pistas/python/soluciones/ej-opcional/*.py /tmp/opcional-sol/
+          (cd /tmp/opcional-sol && pytest -q)                   # la solución con pruebas estrictas pasa
+          cp pistas/python/soluciones/ej-opcional/test_ajuste_stock.py /tmp/opcional/
+          if (cd /tmp/opcional && pytest -q); then echo 'Las pruebas estrictas deberían fallar contra el código con defectos'; exit 1; fi
       - name: Solución de referencia (ej4)
         run: |
           mkdir /tmp/ej4 && cp -r pistas/python/src/. /tmp/ej4/
@@ -44,6 +53,14 @@ jobs:
         run: cd /tmp/js && npm test
       - name: Compilar la interfaz
         run: cd /tmp/js && npm run build
+      - name: Ejercicio opcional (revisión de PR)
+        run: |
+          cd /tmp/js
+          npm run test:ej -- ej-opcional                        # las pruebas débiles del PR pasan
+          cp soluciones/ej-opcional/ajusteStock.test.js ejercicios/ej-opcional-revision-pr/
+          if npm run test:ej -- ej-opcional; then echo 'Las pruebas estrictas deberían fallar contra el código con defectos'; exit 1; fi
+          cp soluciones/ej-opcional/ajusteStock.js ejercicios/ej-opcional-revision-pr/
+          npm run test:ej -- ej-opcional                        # la solución pasa
       - name: Soluciones de referencia (ej1, ej4, ej5)
         run: |
           cd /tmp/js

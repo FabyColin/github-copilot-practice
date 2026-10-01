@@ -34,16 +34,19 @@ nav:
       - 3. Código legacy: ejercicios/ej3-codigo-legacy.md
       - 4. Agent mode y pruebas: ejercicios/ej4-agent-descuentos.md
       - 5. Imagen a código: ejercicios/ej5-imagen-a-codigo.md
+      - Opcional, Revisa el PR: ejercicios/ej-opcional-revision-pr.md
       - Pista Python:
           - 1. Autocompletado: ejercicios/python/ej1-autocompletado.md
           - 2. Chat, contexto y prompting: ejercicios/python/ej2-chat-contexto-prompting.md
           - 3. Código legacy: ejercicios/python/ej3-codigo-legacy.md
           - 4. Agent mode y pruebas: ejercicios/python/ej4-agent-descuentos.md
           - 5. Imagen a código: ejercicios/python/ej5-imagen-a-codigo.md
+          - Opcional, Revisa el PR: ejercicios/python/ej-opcional-revision-pr.md
       - Pista JavaScript:
           - 1. Autocompletado: ejercicios/javascript/ej1-autocompletado.md
           - 2. Chat, contexto y prompting: ejercicios/javascript/ej2-chat-contexto-prompting.md
           - 3. Código legacy: ejercicios/javascript/ej3-codigo-legacy.md
           - 4. Agent mode y pruebas: ejercicios/javascript/ej4-agent-descuentos.md
           - 5. Imagen a código: ejercicios/javascript/ej5-imagen-a-codigo.md
+          - Opcional, Revisa el PR: ejercicios/javascript/ej-opcional-revision-pr.md
   - Recursos: recursos.md

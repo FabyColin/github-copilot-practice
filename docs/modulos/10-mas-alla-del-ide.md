@@ -29,6 +29,8 @@ Copilot puede revisar un Pull Request y dejar comentarios (a veces con cambios s
 - **Complementa, no reemplaza**, la revisión humana.
 - Respeta las instrucciones del repositorio.
 
+Para practicar la revisión de un cambio generado con IA, hay un [ejercicio opcional](../ejercicios/ej-opcional-revision-pr.md) (fuera de la agenda).
+
 ## 10.3 MCP: conectar herramientas externas
 
 El **Model Context Protocol** es un estándar abierto para que el agente use herramientas y datos externos (documentación, bases de datos, GitHub, ticketing…).

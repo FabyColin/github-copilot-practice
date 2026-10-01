@@ -9,6 +9,7 @@ Curso de 1 día (09:00 a 16:50, 7 h 50 min efectivas) sobre GitHub Copilot, con 
 | `00-setup/` | Checklist previo, día del curso y cierre; solución de problemas |
 | `01-fundamentos/` a `09-imagen-a-codigo/` | Guion de cada módulo: tiempos, qué decir, qué demostrar, errores frecuentes |
 | `10-mas-alla-del-ide/` | Material de la demo: issue de ejemplo y configuración MCP |
+| `11-opcional-revision-pr/` | **Ejercicio opcional** (fuera de la agenda): guion y clave de los defectos |
 
 ## Qué pista elegir
 
@@ -64,7 +65,7 @@ Después, en cada carpeta generada: `git add -A`, `git commit` y `git push`. El 
 | 16:15 | 10. Más allá del IDE (demo) | 25 |
 | 16:40 | Cierre | 10 |
 
-Holgura: 10 min antes de las 17:00.
+Holgura: 10 min antes de las 17:00. El [ejercicio opcional](11-opcional-revision-pr/guion.md) queda fuera de este horario.
 
 ## Si vas atrasado
 
@@ -74,6 +75,10 @@ Recorta en este orden:
 2. En el Ejercicio 4, omite la mutación manual y limita los casos borde (ahorras 10 min).
 3. En el Ejercicio 5, entrega una versión inicial y haz la iteración 2 como demo (ahorras 10 min).
 4. El módulo 10 pasa de demo en vivo a mostrar capturas o un PR ya generado (ahorras 15 min).
+
+## Ejercicio opcional
+
+Existe un ejercicio **opcional** de 20 minutos, [Revisa el Pull Request](11-opcional-revision-pr/guion.md), que **no está en la agenda** ni cuenta en la rúbrica. Ofrécelo a quien termine antes o déjalo como práctica posterior; si vas justo de tiempo, ignóralo. La clave de sus tres defectos está en [`clave.md`](11-opcional-revision-pr/clave.md).
 
 ## Rúbrica por ejercicio
 
@@ -97,6 +102,7 @@ El criterio más valioso es **Revisión crítica**: un alumno que acepta todo si
 | 3 | `ej3/reporte_ventas.py` y [`bugs.md`](06-comprension-codigo/bugs.md) | `ej3/reporte_ventas.js` y [`bugs.md`](06-comprension-codigo/bugs.md) |
 | 4 | `ej4/` (app, descuentos y pruebas; cobertura 100 % de `descuentos.py`) | `ej4/` (app, descuentos y pruebas; cobertura 100 % de `descuentos.js`) |
 | 5 | `ej5/` (plantilla Jinja) | `ej5/` (componente React y su prueba) |
+| Opcional | `ej-opcional/` (módulo corregido y 15 pruebas estrictas) | `ej-opcional/` (ídem) |
 
 El flujo de CI valida automáticamente las soluciones de los ejercicios 1 y 4 en Python, y de los ejercicios 1, 4 y 5 en JavaScript, y comprueba que los dos repos de alumnos se puedan generar.
 
