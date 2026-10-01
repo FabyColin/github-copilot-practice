@@ -368,6 +368,7 @@ content = [
 
 # Textos que cambian según la pista (el resto del deck es común)
 TEXTOS_JS = {
+    "Solo modifica app.py y crea descuentos.py": "Solo modifica app.js y crea descuentos.js",
     "caso de farmacia, en Python y Flask": "caso de farmacia, en Express y React",
     "Pytest es nuestro equivalente a Jest.": "Jest para la API y React Testing Library para los componentes.",
     "en descuentos.py, y además la prueba de mutación debe fallar": "en descuentos.js, y además la prueba de mutación debe fallar",
