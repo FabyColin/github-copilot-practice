@@ -16,6 +16,7 @@ from pathlib import Path
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--pista", required=True, choices=["python", "javascript"])
+ap.add_argument("--sufijo", default="", help="texto extra para el nombre del archivo, p. ej. _v2")
 ARGS = ap.parse_args()
 PISTA = ARGS.pista
 
@@ -57,7 +58,7 @@ content = [
      "subtitle": "Más manos al teclado que diapositivas.",
      "stats": [
          {"value": "10", "label": "módulos", "description": "del autocompletado al cloud agent"},
-         {"value": "5", "label": "ejercicios", "description": "en Python y Flask"},
+         {"value": "5", "label": "ejercicios", "description": "caso de farmacia, en Python y Flask"},
          {"value": "3 h 45", "label": "de práctica", "description": "guiada por el instructor"},
      ]},
 
@@ -116,18 +117,14 @@ content = [
               [("arrow_right", "Predice tu siguiente cambio"), ("layers", "Ideal para refactors en cascada"),
                ("alert", "Revisa cada edición")]),
      ]},
-    {"type": "timeline",
+    {"type": "process_flow",
      "title": "Ejercicio 1: construye un inventario con Tab.",
      "subtitle": "Sin chat: solo autocompletado, comentarios y NES.",
-     "phases": [
-         {"number": "A", "title": "Ghost text", "duration": "10 min",
-          "items": ["Cuatro funciones", "Anota lo que rechazas"]},
-         {"number": "B", "title": "Comentarios", "duration": "10 min",
-          "items": ["Filtrar y ordenar", "Mejora el comentario"]},
-         {"number": "C", "title": "NES", "duration": "10 min",
-          "items": ["Renombra un campo", "Busca lo que NES no vio"]},
-         {"number": "50", "title": "Inventario", "duration": "50 min",
-          "items": ["Clase completa", "6 pruebas en verde"]},
+     "steps": [
+         {"label": "A · 10 MIN", "headline": "Ghost text", "description": "Cuatro funciones", "icon": "bolt"},
+         {"label": "B · 10 MIN", "headline": "Comentarios", "description": "Filtrar y ordenar", "icon": "brain"},
+         {"label": "C · 10 MIN", "headline": "NES", "description": "Renombrar un campo", "icon": "layers"},
+         {"label": "50 MIN", "headline": "Inventario", "description": "Clase con caducidad y 8 pruebas", "icon": "check"},
      ]},
 
     # ---------- 3. Chat ----------
@@ -294,7 +291,7 @@ content = [
      "subtitle": "Plan, ejecución controlada y pruebas en verde.",
      "phases": [
          {"number": "01", "title": "Planear", "duration": "10 min",
-          "items": ["Modo Plan con las reglas", "Ajusta antes de ejecutar"]},
+          "items": ["Plan con reglas de receta", "Ajusta antes de ejecutar"]},
          {"number": "02", "title": "Agent", "duration": "20 min",
           "items": ["Lee cada comando", "Prueba Undo y checkpoint"]},
          {"number": "03", "title": "Pruebas", "duration": "25 min",
@@ -371,6 +368,7 @@ content = [
 
 # Textos que cambian según la pista (el resto del deck es común)
 TEXTOS_JS = {
+    "caso de farmacia, en Python y Flask": "caso de farmacia, en Express y React",
     "Pytest es nuestro equivalente a Jest.": "Jest para la API y React Testing Library para los componentes.",
     "en descuentos.py, y además la prueba de mutación debe fallar": "en descuentos.js, y además la prueba de mutación debe fallar",
     "Del mockup a la página.": "Del mockup al componente.",
@@ -419,6 +417,6 @@ brief = {
 
 assemble_deck(
     template_path=os.path.join(SKILL, "template", "Derevo_Master_Template.pptx"),
-    output_path=os.path.join(OUT_DIR, f"Copilot_Fundamentos_Derevo_{PISTA}.pptx"),
+    output_path=os.path.join(OUT_DIR, f"Copilot_Fundamentos_Derevo_{PISTA}{ARGS.sufijo}.pptx"),
     brief=brief,
 )
