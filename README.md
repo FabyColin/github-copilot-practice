@@ -92,3 +92,4 @@ Empieza por [`session-delivery-resources/readme.md`](session-delivery-resources/
 ## Licencia
 
 MIT. Consulta [LICENSE](LICENSE).
+# copilot-fundamentos-curso
